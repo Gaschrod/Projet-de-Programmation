@@ -1,8 +1,10 @@
 package InfoTraffic_sequential;
 import java.util.Random;
 import Util.Utilities;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import eventb_prelude.*;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Test_Raffinement2{
 
@@ -462,28 +464,28 @@ public class Test_Raffinement2{
 		secondary_lights = Utilities.someVal(new BSet<>((new Enumerated(1,Utilities.max_integer))));
 
 		//Init values for parameters in event: station1_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true, false)));
+		Boolean change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true, false)));
 
 		//Init values for parameters in event: station2_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+		change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 
 		//Init values for parameters in event: station3_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+		change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 
 		//Init values for parameters in event: station4_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+		change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 
 		//Init values for parameters in event: station5_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+		change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 
 		//Init values for parameters in event: station6_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+		change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 
 		//Init values for parameters in event: station7_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+		change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 
 		//Init values for parameters in event: station8_switch
-		Boolean change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+		change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 
 		while (true){
 			switch (rnd.nextInt(n)){
@@ -862,14 +864,14 @@ public class Test_Raffinement2{
 			rail_value = Utilities.someVal(new BSet<Integer>((new Enumerated(1,Utilities.max_integer))));
 			light_color = Utilities.someVal(new BSet<Integer>((new Enumerated(1,Utilities.max_integer))));
 			secondary_lights = Utilities.someVal(new BSet<Integer>((new Enumerated(1,Utilities.max_integer))));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
-			change_value = Utilities.someVal(new BSet<Boolean>(Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
+			change_value = Utilities.someVal(new BSet<Boolean>((TreeSet<Boolean>) Set.of(true,false)));
 		}
 	}
 
