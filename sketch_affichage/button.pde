@@ -7,14 +7,15 @@ class Button implements Entity
   float h;
   color fill_color;
   color border_color;
+  color hover_color = #3C63D5;
   
-  Button(String label, float x, float y, float w)
+  Button(String label, float x, float y, float w, float h)
   {
     this.label = label;
     this.x = x;
     this.y = y;
     this.w = w;
-    this.h = 16;
+    this.h = h;
     border_color = #000000;
     fill_color = #FFFFFF;
   }
@@ -30,7 +31,7 @@ class Button implements Entity
       }
       else
       {
-        fill_color = #FFFFFF;
+        fill_color = lerpColor(fill_color, hover_color, 0.5);
       }
     }
     else
@@ -45,11 +46,11 @@ class Button implements Entity
     push();
     
     fill(fill_color);
-    stroke(#000000); // Couleur de contour noire
+    stroke(border_color);
     rect(x, y, w, h);
     
-    fill(#000000);
-    textSize(h - 4);
+    fill(border_color);
+    textSize(h - 6);
     text(label, x + 2, y + 2, w, h);
     
     pop();
