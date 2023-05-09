@@ -1,6 +1,3 @@
-// Entities
-Entity[] entities;
-
 public void setup() {
   size(1900, 1400);
   strokeWeight(2);
@@ -10,6 +7,7 @@ public void draw() {
   background(255); // Effacer l'écran
   
   noFill();
+  strokeWeight(3);
   stroke(0);
   rect(100, 150, 100, 60); // Dessiner un rectangle de 150x120 en position (900, 150) gare primaire 
   rect(1000, 150, 100, 60);
@@ -19,10 +17,10 @@ public void draw() {
   rect(1600, 750 , 100 ,60);
 
   stroke(0);
-  rect(550,150,100,60);//gare secondaire
-  rect(550,750,100,60);
-  rect(100,450,100,60);
-  rect(1000,450,100,60);
+  rect(550,120,100,60);//gare secondaire
+  rect(550,780,100,60);
+  rect(50,450,100,60);
+  rect(1050,450,100,60);
   rect(1300, 750 , 100 ,60);
   rect(300,600,100,60);
   rect(300,300,100,60);
@@ -57,14 +55,14 @@ public void draw() {
   stroke(0);
   fill(0, 255, 0); // Définir la couleur de remplissage en vert
   ellipse(220, 160, 20, 20);//haut
-  ellipse(530, 160, 20, 20);
-  ellipse(670, 160, 20, 20);
+  ellipse(530, 150, 20, 20);
+  ellipse(670, 150, 20, 20);
   ellipse(980, 160, 20, 20);  
   
   stroke(0);
    ellipse(220, 800, 20, 20);//bas
-   ellipse(530, 800, 20, 20);
-   ellipse(670, 800, 20, 20);
+   ellipse(530, 810, 20, 20);
+   ellipse(670, 810, 20, 20);
    ellipse(980, 800, 20, 20); 
    ellipse(1120, 800, 20, 20); 
    ellipse(1280, 800, 20, 20); 
@@ -78,10 +76,10 @@ public void draw() {
    ellipse(120, 730, 20, 20); 
    
    stroke(0);
-   ellipse(1070, 230, 20, 20); //droite
-   ellipse(1070, 430, 20, 20); 
-   ellipse(1070, 530, 20, 20); 
-   ellipse(1070, 730, 20, 20); 
+   ellipse(1080, 230, 20, 20); //droite
+   ellipse(1080, 430, 20, 20); 
+   ellipse(1080, 530, 20, 20); 
+   ellipse(1080, 730, 20, 20); 
 
    stroke(0);
    ellipse(220, 210, 20, 20);//diag haut gauche
@@ -111,11 +109,43 @@ public void draw() {
    ellipse(900,680,20,20);
    ellipse(1000,730,20,20);
   
-  stroke(255, 0, 200); // Définit la couleur orange
-  line(150,210,150,240); // Dessine la ligne
+  strokeWeight(5);
+  stroke(255, 0, 200); // Définit la couleur rose
+  line(150,210,150,240); // Dessine aiguillage 30px
+  line(150,720,150,750); // si mettre normalement 150 
+  line(150,420,140,450); //gauche
+  line(140,510,150,540);
   
-  // Buttons
-  Button myButton = new Button("Button test", 1300, 50, 100);
-  myButton.update();
-  myButton.draw();
+  line(1050,210,1050,240); // Dessine aiguillage 30px
+  line(1050,720,1050,750); // si mettre normalement 150 
+  line(1050,420,1060,450); // droite 
+  line(1060,510,1050,540);
+  
+                         // Dessine aiguillage 30px
+  line(650,170,680,180); // si mettre normalement 150 
+  line(520,180,550,170); //haut
+
+
+                          // Dessine aiguillage 30px
+  line(650,790,680,780); // si mettre normalement 150 
+  line(520,780,550,790); //bas
+ 
+  
+  line(1270,780,1300,770); //celle sud 
+  line(1400,770,1430,780);
+  line(1570,780,1600,780);
+  
+  line(520,432,550,450);//central
+  
+  line(350,360,430,378);//haut gauche 
+  line(278,280,300,325);
+  
+  line(278,680,300,660);//transit
+  
+  line(770,378,850,360);//haut droit 
+  line(900,325,930,274);
+  
+  line(770,580,850,600);//bas droite
+  line(900,625,930,685);
+  
 }
