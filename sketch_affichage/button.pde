@@ -1,4 +1,4 @@
-class Button implements Entity
+class Button
 {
   String label;
   float x;
@@ -19,8 +19,7 @@ class Button implements Entity
     border_color = #000000;
     fill_color = #FFFFFF;
   }
- 
-  @Override
+
   void update()
   {
     if (contains(mouseX, mouseY))
@@ -40,7 +39,7 @@ class Button implements Entity
     }
   }
   
-  @Override
+
   void draw()
   {
     push();
@@ -59,5 +58,18 @@ class Button implements Entity
   boolean contains(float x, float y)
   {
     return x >= this.x && y >= this.y && x < this.x + w && y < this.y + h;
+  }
+
+  boolean clic(int mouseX, int mouseY) { // return true if the button is clicked
+    if (mouseX >= this.x && mouseX <= this.x + w && mouseY >= this.y && mouseY <= this.y + h) {
+     return true;
+      } else {
+       return false;
+      }
+    }
+
+  void method1() {
+    println("method1");
+    machine.get_spawn_train().run_spawn_train(1, 1);
   }
 }

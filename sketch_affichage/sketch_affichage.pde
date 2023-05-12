@@ -1,5 +1,3 @@
-// Entities
-Entity[] entities;
 
 public void setup() {
   size(1900, 1400);
@@ -152,215 +150,170 @@ public void draw() {
   line(900,625,930,685);
   
     // Buttons
-  Button button1 = new Button("1", 50, 845, 100, 20);
   button1.update();
   button1.draw();
-  
-  Button button2 = new Button("2", 50, 880, 100, 20);
+
   button2.update();
   button2.draw();
-  
-  Button button3 = new Button("2", 160, 880, 100, 20);
+
   button3.update();
   button3.draw();
-  
-  Button button4 = new Button("2", 270, 880, 100, 20);
+
   button4.update();
   button4.draw();
-  
-  Button button5 = new Button("2", 380, 880, 100, 20);
+
   button5.update();
   button5.draw();
-  
-  Button button6 = new Button("2", 490, 880, 100, 20);
+
   button6.update();
   button6.draw();
-  
-  Button button7 = new Button("2", 600, 880, 100, 20);
+
   button7.update();
   button7.draw();
-  
-  Button button8 = new Button("2", 710, 880, 100, 20);
+
   button8.update();
   button8.draw();
-  
-  Button button9 = new Button("2", 820, 880, 100, 20);
+
   button9.update();
   button9.draw();
-  
-  Button button10 = new Button("2", 930, 880, 100, 20);
+
   button10.update();
   button10.draw();
-  
-  Button button11 = new Button("2", 1040, 880, 100, 20);
+
   button11.update();
   button11.draw();
-  
-  Button button12 = new Button("2", 1150, 880, 100, 20);
+
   button12.update();
   button12.draw();
-  
-  Button button13 = new Button("2", 50, 910, 100, 20);
+
   button13.update();
   button13.draw();
-  
-  Button button14 = new Button("2", 160, 910, 100, 20);
+
   button14.update();
   button14.draw();
-  
-  Button button15 = new Button("2", 270, 910, 100, 20);
+
   button15.update();
   button15.draw();
-  
-  Button button16 = new Button("2", 380, 910, 100, 20);
+
   button16.update();
   button16.draw();
-  
-  Button button17 = new Button("2", 490, 910, 100, 20);
+
   button17.update();
   button17.draw();
-  
-  Button button18 = new Button("2", 600, 910, 100, 20);
+
   button18.update();
   button18.draw();
-  
-  Button button19 = new Button("2", 710, 910, 100, 20);
+
   button19.update();
   button19.draw();
-  
-  Button button20 = new Button("2", 820, 910, 100, 20);
+
   button20.update();
   button20.draw();
-  
-    Button button21 = new Button("2", 930, 910, 100, 20);
+
   button21.update();
   button21.draw();
-  
-  Button button22 = new Button("2", 1040, 910, 100, 20);
+
   button22.update();
   button22.draw();
-  
-  Button button23 = new Button("2", 1150, 910, 100, 20);
+
   button23.update();
   button23.draw();  
-  
-  Button button24 = new Button("2", 50, 945, 100, 20);
+
   button24.update();
   button24.draw();
-  
-  Button button25 = new Button("2", 160, 945, 100, 20);
+
   button25.update();
   button25.draw();
-  
-  Button button26 = new Button("2", 270, 945, 100, 20);
+
   button26.update();
   button26.draw();
-  
-  Button button27 = new Button("2", 380, 945, 100, 20);
+
   button27.update();
   button27.draw();
-  
-  Button button28 = new Button("2", 490, 945, 100, 20);
+
   button28.update();
   button28.draw();
-  
-  Button button29 = new Button("2", 600, 945, 100, 20);
+
   button29.update();
   button29.draw();
-  
-  Button button30 = new Button("2", 710, 945, 100, 20);
+
   button30.update();
   button30.draw();
-  
-  Button button31 = new Button("2", 820, 945, 100, 20);
+
   button31.update();
   button31.draw();
-  
-  Button button32 = new Button("2", 930, 945, 100, 20);
+
   button32.update();
   button32.draw();
-  
-  Button button33 = new Button("2", 1040, 945, 100, 20);
+
   button33.update();
   button33.draw();
-  
-  Button button34 = new Button("2", 1150, 945, 100, 20);
+
   button34.update();
   button34.draw();
-  
-  Button button35 = new Button("2", 50, 975, 100, 20);
+
   button35.update();
   button35.draw();
-  
-  Button button36 = new Button("2", 160, 975, 100, 20);
+
   button36.update();
   button36.draw();
-  
-  Button button37 = new Button("2", 270, 975, 100, 20);
+
   button37.update();
   button37.draw();
-  
-  Button button38 = new Button("2", 380, 975, 100, 20);
+
   button38.update();
   button38.draw();
-  
-  Button button39 = new Button("2", 490, 975, 100, 20);
+
   button39.update();
   button39.draw();
-  
-  Button button40 = new Button("2", 600, 975, 100, 20);
+
   button40.update();
   button40.draw();
-  
-  Button button41 = new Button("2", 710, 975, 100, 20);
+
   button41.update();
   button41.draw();
-  
-  Button button42 = new Button("2", 820, 975, 100, 20);
+
   button42.update();
   button42.draw();
-  
-  Button button43 = new Button("2", 930, 975, 100, 20);
+
   button43.update();
   button43.draw();
-  
-  Button button44 = new Button("2", 1040, 975, 100, 20);
+
   button44.update();
   button44.draw();
-  
-  Button button45 = new Button("2", 1150, 975, 100, 20);
+
   button45.update();
   button45.draw();
-  
-  Button button46 = new Button("1", 1300, 880, 100, 20);
+
   button46.update();
   button46.draw();
-  
-  Button button47 = new Button("2", 1300, 910, 100, 20);
+
   button47.update();
   button47.draw();
-  
-  Button button48 = new Button("3", 1300, 945, 100, 20);
+
   button48.update();
   button48.draw();
-  
-  Button button49 = new Button("4", 1300, 975, 100, 20);
+
   button49.update();
   button49.draw();
-  
-  Button button50 = new Button("1", 1410, 880, 100, 20);
+
   button50.update();
   button50.draw();
-  
-  Button button51 = new Button("2", 1410, 910, 100, 20);
+
   button51.update();
   button51.draw();
-  
-  Button button52 = new Button("3", 1410, 945, 100, 20);
+
   button52.update();
   button52.draw();
-  
-  Button button53 = new Button("4", 1410, 975, 100, 20);
+
   button53.update();
   button53.draw();
+}
+
+void mouseClicked() {
+    if (button1.clic(mouseX, mouseY)) {
+      button1.method1();
+    } else if (button2.clic(mouseX, mouseY)) {
+      println("Button2 clicked");
+    }
 }
