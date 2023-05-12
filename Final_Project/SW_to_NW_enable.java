@@ -1,5 +1,3 @@
-
-
 public class SW_to_NW_enable{
 	/*@ spec_public */ private Raffinement2 machine; // reference to the machine 
 
@@ -15,7 +13,7 @@ public class SW_to_NW_enable{
 		requires true;
  		assignable \nothing;
 		ensures \result <==> machine.get_NW_SW_available().apply(new Integer(2)).equals(false); */
-	public /*@ pure */ boolean guard_SW_to_NW_enable() {
+	public boolean guard_SW_to_NW_enable() {
 		return machine.get_NW_SW_available().apply(new Integer(2)).equals(false);
 	}
 

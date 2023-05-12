@@ -72,4 +72,12 @@ class Button
     int train_number = machine.get_number_train() + 1;
     machine.get_spawn_train().run_spawn_train(station, train_number);
   }
+
+  void button_NW_to_NE_railway() {
+    machine.get_NW_to_NE_railway().run_NW_to_NE_railway(9);
+  }
+
+  void button_avance_NW_to_NE(){
+    machine.get_avance_NW_to_NE().run_avance_NW_to_NE();
+  }
 }

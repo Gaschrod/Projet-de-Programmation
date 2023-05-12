@@ -171,8 +171,8 @@ public void draw() {
   spawn_transit.update();
   spawn_transit.draw();
 
-  button8.update();
-  button8.draw();
+  //NW_to_SW_enable.update();
+  //NW_to_SW_enable.draw();
 
   button9.update();
   button9.draw();
@@ -225,8 +225,8 @@ public void draw() {
   button25.update();
   button25.draw();
 
-  button26.update();
-  button26.draw();
+  avance_NW_to_NE.update();
+  avance_NW_to_NE.draw();
 
   button27.update();
   button27.draw();
@@ -243,8 +243,8 @@ public void draw() {
   button31.update();
   button31.draw();
 
-  button32.update();
-  button32.draw();
+  NW_to_NE_railway.update();
+  NW_to_NE_railway.draw();
 
   button33.update();
   button33.draw();
@@ -331,6 +331,16 @@ void mouseClicked() {
     else if (spawn_transit.clic(mouseX, mouseY)) {
     spawn_transit.button_spawn_train(70);
     }  
-    
+    /*else if (NW_to_SW_enable.clic(mouseX, mouseY)) {
+      NW_to_SW_enable.button_NW_to_SW_enable();
+    }*/
+    else if(NW_to_NE_railway.clic(mouseX, mouseY)){
+      NW_to_NE_railway.button_NW_to_NE_railway();
+    }
+    else if (avance_NW_to_NE.clic(mouseX, mouseY)){
+      avance_NW_to_NE.button_avance_NW_to_NE();
+    }
+  
   println("Stations occupancy = " + machine.get_station_occupancy());
+System.out.println("NW_to_NE state: " + machine.get_NW_to_NE());
 }
