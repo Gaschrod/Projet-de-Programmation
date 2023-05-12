@@ -312,7 +312,7 @@ public void draw() {
 
 void mouseClicked() {
     if (button1.clic(mouseX, mouseY)) {
-      button1.method1();
+      button1.button_spawn_train();
     } else if (button2.clic(mouseX, mouseY)) {
       println("Button2 clicked");
     }

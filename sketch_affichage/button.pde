@@ -68,8 +68,8 @@ class Button
       }
     }
 
-  void method1() {
-    println("method1");
-    machine.get_spawn_train().run_spawn_train(1, 1);
+  void button_spawn_train() {
+    int train_number = machine.get_number_train() + 1;
+    machine.get_spawn_train().run_spawn_train(10, train_number);
   }
 }
