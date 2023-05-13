@@ -74,10 +74,10 @@ class Button
   }
 
   void button_NW_to_NE_railway() {
-    machine.get_NW_to_NE_railway().run_NW_to_NE_railway(9);
+    machine.get_NW_to_NE_railway().run_NW_to_NE_railway();
   }
 
-  //void button_avance_NW_to_NE(){
-  //  machine.get_avance_NW_to_NE().run_avance_NW_to_NE();
-  //}
+  /*void button_avance_NW_to_NE(){
+    machine.get_avance_NW_to_NE().run_avance_NW_to_NE(Integer second, Integer third, Integer arrival_station, Integer first);
+  }*/
 }
