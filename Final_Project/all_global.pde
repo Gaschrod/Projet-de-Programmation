@@ -53,3 +53,6 @@ Button button50 = new Button("1", 1410, 880, 100, 20);
 Button button51 = new Button("2", 1410, 910, 100, 20);
 Button button52 = new Button("3", 1410, 945, 100, 20);
 Button button53 = new Button("4", 1410, 975, 100, 20);
+
+BRelation<Integer,Integer> station_occupancy;
+BRelation<Integer,Integer> secondary_occupancy;
