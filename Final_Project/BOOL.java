@@ -1,4 +1,4 @@
-
+import java.util.*;
 
 /** a class to represent type BOOL as a set in JML 
  * @author Tim Wahls & Nestor Catano & Victor Rivera

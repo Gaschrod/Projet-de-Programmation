@@ -1,3 +1,5 @@
+import java.util.Iterator;
+import java.util.List;
 
 public void setup() {
   size(1900, 1400);
@@ -173,8 +175,8 @@ public void draw() {
   spawn_transit.update();
   spawn_transit.draw();
 
-  button8.update();
-  button8.draw();
+  //NW_to_SW_enable.update();
+  //NW_to_SW_enable.draw();
 
   button9.update();
   button9.draw();
@@ -227,8 +229,8 @@ public void draw() {
   button25.update();
   button25.draw();
 
-  button26.update();
-  button26.draw();
+  avance_NW_to_NE.update();
+  avance_NW_to_NE.draw();
 
   button27.update();
   button27.draw();
@@ -245,8 +247,8 @@ public void draw() {
   button31.update();
   button31.draw();
 
-  button32.update();
-  button32.draw();
+  NW_to_NE_railway.update();
+  NW_to_NE_railway.draw();
 
   button33.update();
   button33.draw();
@@ -391,6 +393,34 @@ void mouseClicked() {
     else if (spawn_transit.clic(mouseX, mouseY)) {
     spawn_transit.button_spawn_train(70);
     }  
-    
+    /*else if (NW_to_SW_enable.clic(mouseX, mouseY)) {
+      NW_to_SW_enable.button_NW_to_SW_enable();
+    }*/
+    else if(NW_to_NE_railway.clic(mouseX, mouseY)){
+      NW_to_NE_railway.button_NW_to_NE_railway();
+    }
+    else if (avance_NW_to_NE.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_NW_NE = machine.get_NW_to_NE();
+      Iterator<Pair<Integer, Integer>> it = rail_NW_NE.iterator();
+      List<Integer> elements_NW_NE = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_NW_NE.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+
+      Integer station_NE = occupancyList.get(1);
+      avance_NW_to_NE.button_avance_NW_to_NE(elements_NW_NE, station_NE);
+  }
   println("Stations occupancy = " + machine.get_station_occupancy());
+  println("NW_to_NE" + machine.get_NW_to_NE());
 }

@@ -1,10 +1,4 @@
-
-import java.util.TreeSet;
 import java.util.Iterator;
-
-/** a class to model Event-B relations in Java 
- * @author Tim Wahls & Nestor Catano & Victor Rivera
- */
 
 public class BRelation<K, V> extends BSet<Pair<K, V>> {
 	public static BRelation EMPTY = new BRelation();

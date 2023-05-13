@@ -16,7 +16,6 @@ public class spawn_train{
  		assignable \nothing;
 		ensures \result <==> ((machine.get_number_train()).compareTo(new Integer(7)) < 0 && machine.Train.has(train) && !train.equals(machine.NOTHING) && machine.Main_station.has(point_of_spawn) && machine.get_station_occupancy().apply(point_of_spawn).equals(machine.NOTHING) && !machine.get_station_occupancy().range().has(train)); */
 	public boolean guard_spawn_train( Integer point_of_spawn, Integer train) {
-
 		return (((machine.get_number_train()).compareTo(new Integer(7)) < 0) && ((machine.Train.contains(train) && !train.equals(machine.NOTHING))) && (machine.Main_station.contains(point_of_spawn)) && (machine.Main_station.contains(point_of_spawn)) && (machine.get_station_occupancy().apply(point_of_spawn).equals(machine.NOTHING)));
 
 		//(!Raffinement2.secondaryStation.contains(train))
