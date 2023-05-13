@@ -104,5 +104,69 @@ class Button
   void button_avance_SW_to_NW(List<Integer> args){
     machine.get_avance_SW_to_NW().run_avance_SW_to_NW(args.get(2), 0, args.get(1));
   }
+
+  void button_NW_to_center_railway(){
+    machine.get_NW_to_center_railway().run_NW_to_center_railway();
+  }
+
+  void button_avance_NW_to_center(List<Integer> args){
+    machine.get_avance_NW_to_center().run_avance_NW_to_center(args.get(0), args.get(1), 0);
+  }
+
+  void button_center_to_NW_railway(){
+    machine.get_center_to_NW_railway().run_center_to_NW_railway();
+  }
+
+  void button_avance_center_to_NW(List<Integer> args){
+    machine.get_avance_center_to_NW().run_avance_center_to_NW(args.get(2), 0, args.get(1));
+  }
+
+  void button_center_to_NE_railway(){
+    machine.get_center_to_NE_railway().run_center_to_NE_railway();
+  }
+
+  void button_avance_center_to_NE(List<Integer> args){
+    machine.get_avance_center_to_NE().run_avance_center_to_NE(args.get(0), args.get(1), 0);
+  }
+
+  void button_NE_to_center_railway(){
+    machine.get_NE_to_center_railway().run_NE_to_center_railway();
+  }
+
+  void button_avance_NE_to_center(List<Integer> args){
+    machine.get_avance_NE_to_center().run_avance_NE_to_center(args.get(2), 0, args.get(1));
+  }
+
+  void button_NE_to_S_railway(){
+    machine.get_NE_to_S_railway().run_NE_to_S_railway();
+  }
+
+  void button_avance_NE_to_S(List<Integer> args){
+    machine.get_avance_NE_to_S().run_avance_NE_to_S(args.get(0), args.get(1), 0);
+  }
+
+  void button_S_to_NE_railway(){
+    machine.get_S_to_NE_railway().run_S_to_NE_railway();
+  }
+
+  void button_avance_S_to_NE(List<Integer> args){
+    machine.get_avance_S_to_NE().run_avance_S_to_NE(args.get(2), 0, args.get(1));
+  }
+
+  void button_S_to_SE_railway(){
+    machine.get_S_to_SE_railway().run_S_to_SE_railway();
+  }
+
+  void button_avance_S_to_SE(List<Integer> args){
+    machine.get_avance_S_to_SE().run_avance_S_to_SE(args.get(0), args.get(1), 0);
+  }
+
+  void button_SE_to_S_railway(){
+    machine.get_SE_to_S_railway().run_SE_to_S_railway();
+  }
+
+  void button_avance_SE_to_S(List<Integer> args){
+    machine.get_avance_SE_to_S().run_avance_SE_to_S(args.get(2), 0, args.get(1));
+  }
   
 }
