@@ -235,23 +235,23 @@ public void draw() {
   spawn_transit.update();
   spawn_transit.draw();
 
-  //NW_to_SW_enable.update();
-  //NW_to_SW_enable.draw();
+  avance_transit_to_center.update();
+  avance_transit_to_center.draw();
 
-  button9.update();
-  button9.draw();
+  avance_center_to_transit.update();
+  avance_center_to_transit.draw();
 
-  button10.update();
-  button10.draw();
+  avance_SW_to_transit.update();
+  avance_SW_to_transit.draw();
 
-  button11.update();
-  button11.draw();
+  avance_transit_to_SW.update();
+  avance_transit_to_SW.draw();
 
-  button12.update();
-  button12.draw();
+  avance_S_to_transit.update();
+  avance_S_to_transit.draw();
 
-  button13.update();
-  button13.draw();
+  avance_transit_to_S.update();
+  avance_transit_to_S.draw();
 
   avance_S_to_SW.update();
   avance_S_to_SW.draw();
@@ -277,11 +277,11 @@ public void draw() {
   avance_NE_to_center.update();
   avance_NE_to_center.draw();
 
-  button22.update();
-  button22.draw();
+  avance_center_to_S.update();
+  avance_center_to_S.draw();
 
-  button23.update();
-  button23.draw();  
+  avance_S_to_center.update();
+  avance_S_to_center.draw();  
 
   avance_NW_to_center.update();
   avance_NW_to_center.draw();
@@ -301,11 +301,11 @@ public void draw() {
   avance_SW_to_NW.update();
   avance_SW_to_NW.draw();
 
-  button30.update();
-  button30.draw();
+  SW_to_transit_railway.update();
+  SW_to_transit_railway.draw();
 
-  button31.update();
-  button31.draw();
+  transit_to_SW_railway.update();
+  transit_to_SW_railway.draw();
 
   NW_to_NE_railway.update();
   NW_to_NE_railway.draw();
@@ -349,29 +349,29 @@ public void draw() {
   S_to_SW_railway.update();
   S_to_SW_railway.draw();
 
-  button46.update();
-  button46.draw();
+  center_to_S_railway.update();
+  center_to_S_railway.draw();
 
-  button47.update();
-  button47.draw();
+  S_to_center_railway.update();
+  S_to_center_railway.draw();
 
-  button48.update();
-  button48.draw();
+  transit_to_center_railway.update();
+  transit_to_center_railway.draw();
 
-  button49.update();
-  button49.draw();
+  center_to_transit_railway.update();
+  center_to_transit_railway.draw();
 
-  button50.update();
-  button50.draw();
+  transit_to_S_railway.update();
+  transit_to_S_railway.draw();
 
-  button51.update();
-  button51.draw();
+  S_to_transit_railway.update();
+  S_to_transit_railway.draw();
 
-  button52.update();
+  /*button52.update();
   button52.draw();
 
   button53.update();
-  button53.draw();
+  button53.draw();*/
 
 
   //pushMatrix();
@@ -1075,7 +1075,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_SW_S.add(snd);
       }
-      if (elements_SW_S.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_SW_S.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       SW_to_S_railway.button_SW_to_S_railway();
@@ -1123,7 +1123,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_S_SW.add(snd);
       }
-      if (elements_S_SW.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_S_SW.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       S_to_SW_railway.button_S_to_SW_railway();
@@ -1161,8 +1161,388 @@ void mouseClicked() {
       avance_S_to_SW.button_avance_S_to_SW(elements_S_SW);
     }
 
+    else if (SW_to_transit_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_SW_transit = machine.get_SW_to_transit();
+      Iterator<Pair<Integer, Integer>> it = rail_SW_transit.iterator();
+      List<Integer> elements_SW_transit = new ArrayList<>();
 
-  println("Stations_occupancy : " + machine.get_station_occupancy());
-  println("SW_to_S : " + machine.get_SW_to_S());
-  
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_SW_transit.add(snd);
+      }
+      if (elements_SW_transit.get(0) != 0){
+        return; //There is already a train
+      }
+      SW_to_transit_railway.button_SW_to_transit_railway();
+    }
+
+    else if (avance_SW_to_transit.clic(mouseX,mouseY)){
+      BRelation<Integer, Integer> rail_SW_transit = machine.get_SW_to_transit();
+      Iterator<Pair<Integer, Integer>> it = rail_SW_transit.iterator();
+      List<Integer> elements_SW_transit = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_SW_transit.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_transit = occupancyList.get(6);
+      
+      if(station_transit == 0 && elements_SW_transit.get(2) != 0){
+        Integer neStationOccupancy = elements_SW_transit.get(2);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.transit, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_transit != 0 && elements_SW_transit.get(2) != 0){
+        return;
+      }
+      avance_SW_to_transit.button_avance_SW_to_transit(elements_SW_transit);
+    }
+
+    else if (transit_to_SW_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_transit_SW = machine.get_SW_to_transit();
+      Iterator<Pair<Integer, Integer>> it = rail_transit_SW.iterator();
+      List<Integer> elements_transit_SW = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_transit_SW.add(snd);
+      }
+      if (elements_transit_SW.get(2) != 0){
+        return; //There is already a train
+      }
+      transit_to_SW_railway.button_transit_to_SW_railway();
+    }
+
+    else if (avance_transit_to_SW.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_transit_SW = machine.get_SW_to_transit();
+      Iterator<Pair<Integer, Integer>> it = rail_transit_SW.iterator();
+      List<Integer> elements_transit_SW = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_transit_SW.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_SW = occupancyList.get(4);
+      
+      if(station_SW == 0 && elements_transit_SW.get(0) != 0){
+        Integer neStationOccupancy = elements_transit_SW.get(0);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.SW, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_SW != 0 && elements_transit_SW.get(0) != 0){
+        return;
+      }
+      avance_transit_to_SW.button_avance_transit_to_SW(elements_transit_SW);
+    }
+
+    else if (center_to_S_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_center_S = machine.get_center_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_center_S.iterator();
+      List<Integer> elements_center_S = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_center_S.add(snd);
+      }
+      if (elements_center_S.get(2) != 0){
+        return; //There is already a train
+      }
+      center_to_S_railway.button_center_to_S_railway();
+    }
+
+    else if (avance_center_to_S.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_center_S = machine.get_center_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_center_S.iterator();
+      List<Integer> elements_center_S = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_center_S.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_S = occupancyList.get(0);
+      
+      if(station_S == 0 && elements_center_S.get(2) != 0){
+        Integer neStationOccupancy = elements_center_S.get(2);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.S, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_S != 0 && elements_center_S.get(2) != 0){
+        return;
+      }
+      avance_center_to_S.button_avance_center_to_S(elements_center_S);
+    }
+
+    else if (S_to_center_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_S_center = machine.get_center_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_S_center.iterator();
+      List<Integer> elements_S_center = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_S_center.add(snd);
+      }
+      if (elements_S_center.get(0) != 0){
+        return; //There is already a train
+      }
+      S_to_center_railway.button_S_to_center_railway();
+    }
+
+    else if (avance_S_to_center.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_S_center = machine.get_center_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_S_center.iterator();
+      List<Integer> elements_S_center = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_S_center.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_center = occupancyList.get(5);
+      
+      if(station_center == 0 && elements_S_center.get(0) != 0){
+        Integer neStationOccupancy = elements_S_center.get(0);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.center, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_center != 0 && elements_S_center.get(0) != 0){
+        return;
+      }
+      avance_S_to_center.button_avance_S_to_center(elements_S_center);
+    }
+
+    else if (transit_to_center_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_transit_center = machine.get_transit_to_center();
+      Iterator<Pair<Integer, Integer>> it = rail_transit_center.iterator();
+      List<Integer> elements_transit_center = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_transit_center.add(snd);
+      }
+      if (elements_transit_center.get(0) != 0){
+        return; //There is already a train
+      }
+      transit_to_center_railway.button_transit_to_center_railway();
+    }
+
+    else if (avance_transit_to_center.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_transit_center = machine.get_transit_to_center();
+      Iterator<Pair<Integer, Integer>> it = rail_transit_center.iterator();
+      List<Integer> elements_transit_center = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_transit_center.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_center = occupancyList.get(5);
+      
+      if(station_center == 0 && elements_transit_center.get(2) != 0){
+        Integer neStationOccupancy = elements_transit_center.get(2);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.center, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_center != 0 && elements_transit_center.get(2) != 0){
+        return;
+      }
+      avance_transit_to_center.button_avance_transit_to_center(elements_transit_center);
+    }
+
+    else if (center_to_transit_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_center_transit = machine.get_transit_to_center();
+      Iterator<Pair<Integer, Integer>> it = rail_center_transit.iterator();
+      List<Integer> elements_center_transit = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_center_transit.add(snd);
+      }
+      if (elements_center_transit.get(2) != 0){
+        return; //There is already a train
+      }
+      center_to_transit_railway.button_center_to_transit_railway();
+    }
+
+    else if(avance_center_to_transit.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_center_transit = machine.get_transit_to_center();
+      Iterator<Pair<Integer, Integer>> it = rail_center_transit.iterator();
+      List<Integer> elements_center_transit = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_center_transit.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_transit = occupancyList.get(6);
+      
+      if(station_transit == 0 && elements_center_transit.get(0) != 0){
+        Integer neStationOccupancy = elements_center_transit.get(0);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.transit, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_transit != 0 && elements_center_transit.get(0) != 0){
+        return;
+      }
+      avance_center_to_transit.button_avance_center_to_transit(elements_center_transit);
+    }
+
+    else if (transit_to_S_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_transit_S = machine.get_transit_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_transit_S.iterator();
+      List<Integer> elements_transit_S = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_transit_S.add(snd);
+      }
+      if (elements_transit_S.get(0) != 0){
+        return; //There is already a train
+      }
+      transit_to_S_railway.button_transit_to_S_railway();
+    }
+
+    else if (avance_transit_to_S.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_transit_S = machine.get_transit_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_transit_S.iterator();
+      List<Integer> elements_transit_S = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_transit_S.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_S = occupancyList.get(0);
+      
+      if(station_S == 0 && elements_transit_S.get(2) != 0){
+        Integer neStationOccupancy = elements_transit_S.get(2);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.S, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_S != 0 && elements_transit_S.get(2) != 0){
+        return;
+      }
+      avance_transit_to_S.button_avance_transit_to_S(elements_transit_S);
+    }
+
+    else if (S_to_transit_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_S_transit = machine.get_transit_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_S_transit.iterator();
+      List<Integer> elements_S_transit = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_S_transit.add(snd);
+      }
+      if (elements_S_transit.get(2) != 0){
+        return; //There is already a train
+      }
+      S_to_transit_railway.button_S_to_transit_railway();
+    }
+
+    else if (avance_S_to_transit.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_S_transit = machine.get_transit_to_S();
+      Iterator<Pair<Integer, Integer>> it = rail_S_transit.iterator();
+      List<Integer> elements_S_transit = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_S_transit.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+      
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+      
+      Integer station_transit = occupancyList.get(6);
+      
+      if(station_transit == 0 && elements_S_transit.get(0) != 0){
+        Integer neStationOccupancy = elements_S_transit.get(0);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.transit, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_transit != 0 && elements_S_transit.get(0) != 0){
+        return;
+      }
+      avance_S_to_transit.button_avance_S_to_transit(elements_S_transit);
+    }
+
 }

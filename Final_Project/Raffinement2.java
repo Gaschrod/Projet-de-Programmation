@@ -409,6 +409,14 @@ public class Raffinement2{
 	}
 
 	/*@
+		requires true;
+		assignable \nothing;
+		ensures \result == this.NW_to_NE;*/
+	public  BRelation<Integer,Integer> get_transit_to_center(){
+		return this.transit_to_center;
+	}
+
+	/*@
 	    requires true;
 	    assignable this.NW_to_NE;
 	    ensures this.NW_to_NE == NW_to_NE;*/
@@ -494,14 +502,6 @@ public class Raffinement2{
 	    ensures this.stop_in_2 == stop_in_2;*/
 	public void set_stop_in_2(Boolean stop_in_2){
 		this.stop_in_2 = stop_in_2;
-	}
-
-	/*@
-	    requires true;
-	    assignable \nothing;
-	    ensures \result == this.transit_to_center;*/
-	public  BRelation<Integer,Integer> get_transit_to_center(){
-		return this.transit_to_center;
 	}
 
 	/*@

@@ -1,5 +1,3 @@
-
-
 public class avance_SW_to_S{
 	/*@ spec_public */ private Raffinement2 machine; // reference to the machine 
 
@@ -26,20 +24,19 @@ public class avance_SW_to_S{
 		requires !guard_avance_SW_to_S(second,third,arrival_station,first,train,rail_value,light_color);
 		assignable \nothing;
 		ensures true; */
-	public void run_avance_SW_to_S( Integer second, Integer third, Integer arrival_station, Integer first, Integer train, Integer rail_value, Integer light_color){
-		if(guard_avance_SW_to_S(second,third,arrival_station,first,train,rail_value,light_color)) {
+	public void run_avance_SW_to_S( Integer second, Integer third, /*Integer arrival_station, */ Integer first/*, Integer train, Integer rail_value, Integer light_color*/){
+		//if(guard_avance_SW_to_S(second,third,arrival_station,first,train,rail_value,light_color)) {
 			BRelation<Integer,Integer> SW_to_S_tmp = machine.get_SW_to_S();
-			BRelation<Integer,Integer> station_occupancy_tmp = machine.get_station_occupancy();
-			BRelation<Integer,Integer> rail_tmp = machine.get_rail();
-			BRelation<Integer,Integer> Traffic_light_station_tmp = machine.get_Traffic_light_station();
+			//BRelation<Integer,Integer> station_occupancy_tmp = machine.get_station_occupancy();
+			//BRelation<Integer,Integer> rail_tmp = machine.get_rail();
+			//BRelation<Integer,Integer> Traffic_light_station_tmp = machine.get_Traffic_light_station();
 
 			machine.set_SW_to_S(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(1,first),new Pair<Integer,Integer>(2,second),new Pair<Integer,Integer>(3,third)));
-			machine.set_station_occupancy((station_occupancy_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.S,arrival_station)))));
-			machine.set_rail((rail_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(6,rail_value)))));
-			machine.set_Traffic_light_station((Traffic_light_station_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(23,light_color),new Pair<Integer,Integer>(31,light_color)))));
+			//machine.set_station_occupancy((station_occupancy_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.S,arrival_station)))));
+			//machine.set_rail((rail_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(6,rail_value)))));
+			//machine.set_Traffic_light_station((Traffic_light_station_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(23,light_color),new Pair<Integer,Integer>(31,light_color)))));
 
-			System.out.println("avance_SW_to_S executed second: " + second + " third: " + third + " arrival_station: " + arrival_station + " first: " + first + " train: " + train + " rail_value: " + rail_value + " light_color: " + light_color + " ");
-		}
+			//System.out.println("avance_SW_to_S executed second: " + second + " third: " + third + " arrival_station: " + arrival_station + " first: " + first + " train: " + train + " rail_value: " + rail_value + " light_color: " + light_color + " ");
+		//}
 	}
-
 }

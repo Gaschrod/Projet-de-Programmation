@@ -1,5 +1,3 @@
-
-
 public class transit_to_SW_railway{
 	/*@ spec_public */ private Raffinement2 machine; // reference to the machine 
 
@@ -25,19 +23,19 @@ public class transit_to_SW_railway{
 		requires !guard_transit_to_SW_railway(light_color);
 		assignable \nothing;
 		ensures true; */
-	public void run_transit_to_SW_railway( Integer light_color){
-		if(guard_transit_to_SW_railway(light_color)) {
+	public void run_transit_to_SW_railway(/*Integer light_color*/){
+		//if(guard_transit_to_SW_railway(light_color)) {
 			BRelation<Integer,Integer> SW_to_transit_tmp = machine.get_SW_to_transit();
 			BRelation<Integer,Integer> station_occupancy_tmp = machine.get_station_occupancy();
 			BRelation<Integer,Integer> rail_tmp = machine.get_rail();
-			BRelation<Integer,Integer> Traffic_light_station_tmp = machine.get_Traffic_light_station();
+			//BRelation<Integer,Integer> Traffic_light_station_tmp = machine.get_Traffic_light_station();
 
 			machine.set_SW_to_transit((SW_to_transit_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(3,station_occupancy_tmp.apply(machine.transit))))));
 			machine.set_station_occupancy((station_occupancy_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.transit,machine.NOTHING)))));
-			machine.set_Traffic_light_station((Traffic_light_station_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(28,light_color),new Pair<Integer,Integer>(29,light_color)))));
+			//machine.set_Traffic_light_station((Traffic_light_station_tmp.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(28,light_color),new Pair<Integer,Integer>(29,light_color)))));
 
-			System.out.println("transit_to_SW_railway executed light_color: " + light_color + " ");
-		}
+			//System.out.println("transit_to_SW_railway executed light_color: " + light_color + " ");
+		//}
 	}
 
 }
