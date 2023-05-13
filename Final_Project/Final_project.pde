@@ -14,23 +14,82 @@ public void draw() {
   stroke(0);
   // Dessiner un rectangle de 150x120 en position (900, 150) : gares primaires 
   rect(100, 150, 100, 60); // NW
+
+  textSize(32); // set the text size to 32
+  fill(0); // set the text color to black
+  text("NW", 125, 135); // draw the text "NW" at position (100, 50)
+  fill(255); // set the fill color back to white
+
   rect(1000, 150, 100, 60); // NE
+  fill(0);
+  text("NE", 1025, 135);
+  fill(255);
+
   rect(100, 750, 100,60); // SW
+  fill(0);
+  text("SW", 125, 735);
+  fill(255);
+
   rect(1000, 750,100,60); // S
+  fill(0);
+  text("S", 1025, 735);
+  fill(255);
+
   rect(550,450,100,60); // center
+  fill(0);
+  text("center", 575, 435);
+  fill(255);
+
   rect(1600, 750 , 100 ,60); // SE
+  fill(0);
+  text("SE", 1625, 735);
+  fill(255);
+
   rect(300,600,100,60); // Transit
+  fill(0);
+  text("Transit", 325, 585);
 
   stroke(0);
   //gares secondaires
   rect(550,120,100,60); // Secondary 1
+  fill(0);
+  text("Secondary 1", 575, 105);
+  fill(255);
+
   rect(550,780,100,60); // Secondary 6
+  fill(0);
+  text("Secondary 6", 575, 765);
+  fill(255);
+
   rect(50,450,100,60); // Secondary 7
+  fill(0);
+  text("Secondary 7", 75, 435);
+  fill(255);
+
   rect(1050,450,100,60); // Secondary 4
+  fill(0);
+  text("Secondary 4", 1075, 435);
+  fill(255);
+
   rect(1300, 750 , 100 ,60); // Secondary 5
+  fill(0);
+  text("Secondary 5", 1325, 735);
+  fill(255);
+
   rect(300,300,100,60); // Secondary 2
+  fill(0);
+  text("Secondary 2", 325, 285);
+  fill(255);
+
   rect(800,300,100,60); // Secondary 3
+  fill(0);
+  text("Secondary 3", 825, 285);
+  fill(255);
+
   rect(800,600,100,60); // Secondary 8
+  fill(0);
+  text("Secondary 8", 825, 585);
+  fill(255);
   
   stroke(0);
   line(200, 180, 550, 180); //ligne haut et bas 
@@ -491,6 +550,8 @@ void mouseClicked() {
 
     }
 
+    
+
   println("Stations occupancy = " + machine.get_station_occupancy());
-  println("NW_to_NE" + machine.get_NW_to_NE());
+  
 }
