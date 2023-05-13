@@ -1,3 +1,4 @@
+import java.util.Iterator;
 
 public void setup() {
   size(1900, 1400);
@@ -337,10 +338,19 @@ void mouseClicked() {
     else if(NW_to_NE_railway.clic(mouseX, mouseY)){
       NW_to_NE_railway.button_NW_to_NE_railway();
     }
-    else if (avance_NW_to_NE.clic(mouseX, mouseY)){
-      avance_NW_to_NE.button_avance_NW_to_NE();
-    }
+    //else if (avance_NW_to_NE.clic(mouseX, mouseY)){
+    //  avance_NW_to_NE.button_avance_NW_to_NE();
+  //}
   
   println("Stations occupancy = " + machine.get_station_occupancy());
-System.out.println("NW_to_NE state: " + machine.get_NW_to_NE());
+    
+BRelation<Integer, Integer> nwToNe = machine.get_NW_to_NE();
+Iterator<Pair<Integer, Integer>> it = nwToNe.iterator();
+while (it.hasNext()) {
+    Pair<Integer, Integer> pair = it.next();
+    System.out.println("NW_to_NE train: (" + pair.fst() + ", " + pair.snd() + ")");
+}
+
+
+  System.out.println("NW_to_NE state: " + machine.get_NW_to_NE());
 }

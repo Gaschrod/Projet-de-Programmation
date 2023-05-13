@@ -77,7 +77,7 @@ class Button
     machine.get_NW_to_NE_railway().run_NW_to_NE_railway(9);
   }
 
-  void button_avance_NW_to_NE(){
-    machine.get_avance_NW_to_NE().run_avance_NW_to_NE();
-  }
+  //void button_avance_NW_to_NE(){
+  //  machine.get_avance_NW_to_NE().run_avance_NW_to_NE();
+  //}
 }
