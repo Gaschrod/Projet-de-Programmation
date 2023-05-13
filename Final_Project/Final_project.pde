@@ -461,9 +461,11 @@ void drawGare() {
 void print_train_on_rails(BRelation<Integer, Integer> occupancy, int x1, int y1, int x2, int y2, int x3, int y3) {
   if (occupancy.apply(1) > 0) {
     rect(x1, y1, 50, 20);
-  } else if (occupancy.apply(2) > 0) {
+  }
+  if (occupancy.apply(2) > 0) {
     rect(x2, y2, 50, 20);
-  } else if (occupancy.apply(3) > 0) {
+  }
+  if (occupancy.apply(3) > 0) {
     rect(x3, y3, 50, 20);
   }
 }
