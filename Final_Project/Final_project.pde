@@ -12,23 +12,25 @@ public void draw() {
   noFill();
   strokeWeight(3);
   stroke(0);
-  rect(100, 150, 100, 60); // Dessiner un rectangle de 150x120 en position (900, 150) gare primaire 
-  rect(1000, 150, 100, 60);
-  rect(100, 750, 100,60);
-  rect(1000, 750,100,60);
-  rect(550,450,100,60);
-  rect(1600, 750 , 100 ,60);
+  // Dessiner un rectangle de 150x120 en position (900, 150) : gares primaires 
+  rect(100, 150, 100, 60); // NW
+  rect(1000, 150, 100, 60); // NE
+  rect(100, 750, 100,60); // SW
+  rect(1000, 750,100,60); // S
+  rect(550,450,100,60); // center
+  rect(1600, 750 , 100 ,60); // SE
+  rect(300,600,100,60); // Transit
 
   stroke(0);
-  rect(550,120,100,60);//gare secondaire
-  rect(550,780,100,60);
-  rect(50,450,100,60);
-  rect(1050,450,100,60);
-  rect(1300, 750 , 100 ,60);
-  rect(300,600,100,60);
-  rect(300,300,100,60);
-  rect(800,300,100,60);
-  rect(800,600,100,60);
+  //gares secondaires
+  rect(550,120,100,60); // Secondary 1
+  rect(550,780,100,60); // Secondary 6
+  rect(50,450,100,60); // Secondary 7
+  rect(1050,450,100,60); // Secondary 4
+  rect(1300, 750 , 100 ,60); // Secondary 5
+  rect(300,300,100,60); // Secondary 2
+  rect(800,300,100,60); // Secondary 3
+  rect(800,600,100,60); // Secondary 8
   
   stroke(0);
   line(200, 180, 550, 180); //ligne haut et bas 
@@ -310,6 +312,64 @@ public void draw() {
 
   button53.update();
   button53.draw();
+
+
+  //pushMatrix();
+  //translate(0, 0);
+  //fill(255);
+  //angle(0);
+  //rect(0, 0, 150, 100);
+  //popMatrix();
+  drawGare();
+ 
+}
+
+void drawGare() {
+
+  station_occupancy = machine.get_station_occupancy();
+  int i;
+  for (i = 10; i <= 70; i=i+10) {
+    int station = station_occupancy.apply(i);
+    
+    if (i == 10 && station > 0) { // S
+      rect(1030,770,50,20);
+    } else if (i == 20 && station > 0) { // NE
+      rect(1030,170,50, 20);
+    } else if (i == 30 && station > 0) { // NW
+      rect(130,170,50,20);
+    } else if (i == 40 && station > 0) { // SE
+      rect(1630,770,50,20);
+    } else if (i == 50 && station > 0) { // SW
+      rect(130,770,50,20);
+    } else if (i == 60 && station > 0) { // center
+      rect(580,470,50,20);
+    } else if (i == 70 && station > 0) { // transit
+      rect(330,620,50,20);
+    }
+
+    secondary_occupancy = machine.get_secondary_occupancy();
+    int y;
+    for (y = 111; y <= 888; y=y+111) {
+      int secondary_station = secondary_occupancy.apply(y);
+      if (y == 111 && secondary_station > 0) { // 1
+        rect(580,140,50,20);
+      } else if (y == 222 && secondary_station > 0) { // 2
+        rect(330,320,50,20);
+      } else if (y == 333 && secondary_station > 0) { // 3
+        rect(830,320,50,20);
+      } else if (y == 444 && secondary_station > 0) { // 4
+        rect(1080,470,50,20);
+      } else if (y == 555 && secondary_station > 0) { // 5
+        rect(1330,770,50,20);
+      } else if (y == 666 && secondary_station > 0) { // 6
+        rect(580,800,50,20);
+      } else if (y == 777 && secondary_station > 0) { // 7
+        rect(80,470,50,20);
+      } else if (y == 888 && secondary_station > 0) { // 8
+        rect(830,620,50,20);
+      }
+    }
+  }
 }
 
 void mouseClicked() {
