@@ -168,5 +168,21 @@ class Button
   void button_avance_SE_to_S(List<Integer> args){
     machine.get_avance_SE_to_S().run_avance_SE_to_S(args.get(2), 0, args.get(1));
   }
-  
+
+  void button_SW_to_S_railway(){
+    machine.get_SW_to_S_railway().run_SW_to_S_railway();
+  }
+
+  void button_avance_SW_to_S(List<Integer> args){
+    machine.get_avance_SW_to_S().run_avance_SW_to_S(args.get(0), args.get(1), 0);
+  }
+
+  void button_S_to_SW_railway(){
+    machine.get_S_to_SW_railway().run_S_to_SW_railway();
+  }
+
+  void button_avance_S_to_SW(List<Integer> args){
+    machine.get_avance_S_to_SW().run_avance_S_to_SW(args.get(2), 0, args.get(1));
+  }
+
 }
