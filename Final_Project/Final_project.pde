@@ -392,11 +392,21 @@ void mouseClicked() {
     }   
     else if (spawn_transit.clic(mouseX, mouseY)) {
     spawn_transit.button_spawn_train(70);
-    }  
-    /*else if (NW_to_SW_enable.clic(mouseX, mouseY)) {
-      NW_to_SW_enable.button_NW_to_SW_enable();
-    }*/
+    }
     else if(NW_to_NE_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_NW_NE = machine.get_NW_to_NE();
+      Iterator<Pair<Integer, Integer>> it = rail_NW_NE.iterator();
+      List<Integer> elements_NW_NE = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_NW_NE.add(snd);
+      }
+
+      if (elements_NW_NE.get(0) != 0){
+        return; //There is already a train
+      }
       NW_to_NE_railway.button_NW_to_NE_railway();
     }
     else if (avance_NW_to_NE.clic(mouseX, mouseY)){
@@ -425,7 +435,9 @@ void mouseClicked() {
         BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.NE, neStationOccupancy)));
         machine.set_station_occupancy(updatedStationOccupancy);
       }
-
+      else if (station_NE != 0 && elements_NW_NE.get(2) != 0){
+        return;
+      }
       avance_NW_to_NE.button_avance_NW_to_NE(elements_NW_NE);
   }
   println("Stations occupancy = " + machine.get_station_occupancy());
