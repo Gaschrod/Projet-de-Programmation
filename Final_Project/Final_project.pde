@@ -359,7 +359,14 @@ void mouseClicked() {
         occupancyList.add(snd);}
 
       Integer station_NE = occupancyList.get(1);
-      avance_NW_to_NE.button_avance_NW_to_NE(elements_NW_NE, station_NE);
+
+      if(station_NE == 0 && elements_NW_NE.get(2) != 0){
+        Integer neStationOccupancy = elements_NW_NE.get(2);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.NE, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+
+      avance_NW_to_NE.button_avance_NW_to_NE(elements_NW_NE);
   }
   println("Stations occupancy = " + machine.get_station_occupancy());
   println("NW_to_NE" + machine.get_NW_to_NE());

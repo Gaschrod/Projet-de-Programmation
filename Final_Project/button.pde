@@ -77,7 +77,7 @@ class Button
     machine.get_NW_to_NE_railway().run_NW_to_NE_railway();
   }
 
-  void button_avance_NW_to_NE(List<Integer> args, Integer stationOccupancy){
-    machine.get_avance_NW_to_NE().run_avance_NW_to_NE(args.get(0), args.get(1), stationOccupancy, 0);
+  void button_avance_NW_to_NE(List<Integer> args){
+    machine.get_avance_NW_to_NE().run_avance_NW_to_NE(args.get(0), args.get(1), 0);
   }
 }
