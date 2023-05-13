@@ -1,5 +1,3 @@
-
-
 public class NW_to_NE_railway{
 	/*@ spec_public */ private Raffinement2 machine; // reference to the machine 
 
