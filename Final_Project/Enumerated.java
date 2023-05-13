@@ -1,5 +1,3 @@
-
-
 /** Enumerated type in Java
  * @author Tim Wahls & Nestor Catano & Victor Rivera
  */

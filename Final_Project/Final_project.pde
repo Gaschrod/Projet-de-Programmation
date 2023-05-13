@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.List;
 
 public void setup() {
   size(1900, 1400);
@@ -338,17 +339,28 @@ void mouseClicked() {
     else if(NW_to_NE_railway.clic(mouseX, mouseY)){
       NW_to_NE_railway.button_NW_to_NE_railway();
     }
-    /*else if (avance_NW_to_NE.clic(mouseX, mouseY)){
-      avance_NW_to_NE.button_avance_NW_to_NE();
-  }*/
-  
-  println("Stations occupancy = " + machine.get_station_occupancy());
-    
-  BRelation<Integer, Integer> nwToNe = machine.get_NW_to_NE();
-  Iterator<Pair<Integer, Integer>> it = nwToNe.iterator();
-  while (it.hasNext()) {
-    Pair<Integer, Integer> pair = it.next();
-    System.out.println("NW_to_NE train: (" + pair.fst() + ", " + pair.snd() + ")");
-  }
+    else if (avance_NW_to_NE.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_NW_NE = machine.get_NW_to_NE();
+      Iterator<Pair<Integer, Integer>> it = rail_NW_NE.iterator();
+      List<Integer> elements_NW_NE = new ArrayList<>();
 
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_NW_NE.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+
+      Integer station_NE = occupancyList.get(1);
+      avance_NW_to_NE.button_avance_NW_to_NE(elements_NW_NE, station_NE);
+  }
+  println("Stations occupancy = " + machine.get_station_occupancy());
+  println("NW_to_NE" + machine.get_NW_to_NE());
 }
