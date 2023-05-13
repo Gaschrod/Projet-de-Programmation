@@ -326,6 +326,7 @@ public void draw() {
 
 void drawGare() {
 
+  // Draw the station occupancy
   station_occupancy = machine.get_station_occupancy();
   int i;
   for (i = 10; i <= 70; i=i+10) {
@@ -347,6 +348,7 @@ void drawGare() {
       rect(330,620,50,20);
     }
 
+    // Draw the secondary station occupancy
     secondary_occupancy = machine.get_secondary_occupancy();
     int y;
     for (y = 111; y <= 888; y=y+111) {
@@ -369,6 +371,40 @@ void drawGare() {
         rect(830,620,50,20);
       }
     }
+
+    // Draw the rails occupancy
+    NE_to_S_occupancy = machine.get_NE_to_S();
+    print_train_on_rails(NE_to_S_occupancy, 1030, 270, 1030, 370, 1030, 620);
+    transit_to_center_occupancy = machine.get_transit_to_center();
+    print_train_on_rails(transit_to_center_occupancy, 390, 570, 430, 550, 470, 530);
+    transit_to_S_occupancy = machine.get_transit_to_S();
+    print_train_on_rails(transit_to_S_occupancy, 480, 670, 670, 700, 770, 710);
+    center_to_S_occupancy = machine.get_center_to_S();
+    print_train_on_rails(center_to_S_occupancy, 680, 520, 730, 570, 930, 700);
+    SW_to_S_occupancy = machine.get_SW_to_S();
+    print_train_on_rails(SW_to_S_occupancy, 280, 770, 380, 770, 780, 770);
+    center_to_NE_occupancy = machine.get_center_to_NE();
+    print_train_on_rails(center_to_NE_occupancy, 680, 420, 720, 380, 920, 230);
+    S_to_SE_occupancy = machine.get_S_to_SE();
+    print_train_on_rails(S_to_SE_occupancy, 1150, 770, 1220, 770, 1470, 770);
+    NW_to_SW_occupancy = machine.get_NW_to_SW();
+    print_train_on_rails(NW_to_SW_occupancy, 130, 270, 130, 370, 130, 640);
+    NW_to_center_occupancy = machine.get_NW_to_center();
+    print_train_on_rails(NW_to_center_occupancy, 230, 220, 230, 270, 440, 390);
+    NW_to_NE_occupancy = machine.get_NW_to_NE();
+    print_train_on_rails(NW_to_NE_occupancy, 330, 170, 430, 170, 830, 170);
+    SW_to_transit_occupancy = machine.get_SW_to_transit();
+    print_train_on_rails(SW_to_transit_occupancy, 200, 700, 230, 670, 430, 540);
+  }
+}
+
+void print_train_on_rails(BRelation<Integer, Integer> occupancy, int x1, int y1, int x2, int y2, int x3, int y3) {
+  if (occupancy.apply(1) > 0) {
+    rect(x1, y1, 50, 20);
+  } else if (occupancy.apply(2) > 0) {
+    rect(x2, y2, 50, 20);
+  } else if (occupancy.apply(3) > 0) {
+    rect(x3, y3, 50, 20);
   }
 }
 
