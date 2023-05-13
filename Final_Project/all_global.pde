@@ -56,3 +56,15 @@ Button button53 = new Button("4", 1410, 975, 100, 20);
 
 BRelation<Integer,Integer> station_occupancy;
 BRelation<Integer,Integer> secondary_occupancy;
+
+BRelation<Integer, Integer> NE_to_S_occupancy;
+BRelation<Integer, Integer> transit_to_center_occupancy;
+BRelation<Integer, Integer> transit_to_S_occupancy;
+BRelation<Integer, Integer> center_to_S_occupancy;
+BRelation<Integer, Integer> SW_to_S_occupancy;
+BRelation<Integer, Integer> center_to_NE_occupancy;
+BRelation<Integer, Integer> S_to_SE_occupancy;
+BRelation<Integer, Integer> NW_to_SW_occupancy;
+BRelation<Integer, Integer> NW_to_center_occupancy;
+BRelation<Integer, Integer> NW_to_NE_occupancy;
+BRelation<Integer, Integer> SW_to_transit_occupancy;
