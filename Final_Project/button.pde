@@ -80,4 +80,12 @@ class Button
   void button_avance_NW_to_NE(List<Integer> args){
     machine.get_avance_NW_to_NE().run_avance_NW_to_NE(args.get(0), args.get(1), 0);
   }
+
+  void button_NE_to_NW_railway(){
+    machine.get_NE_to_NW_railway().run_NE_to_NW_railway();
+  }
+
+  void button_avance_NE_to_NW(List<Integer> args){
+    machine.get_avance_NE_to_NW().run_avance_NE_to_NW(args.get(2), 0, args.get(1));
+  }
 }

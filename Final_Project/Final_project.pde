@@ -232,8 +232,8 @@ public void draw() {
   avance_NW_to_NE.update();
   avance_NW_to_NE.draw();
 
-  button27.update();
-  button27.draw();
+  avance_NE_to_NW.update();
+  avance_NE_to_NW.draw();
 
   button28.update();
   button28.draw();
@@ -250,8 +250,8 @@ public void draw() {
   NW_to_NE_railway.update();
   NW_to_NE_railway.draw();
 
-  button33.update();
-  button33.draw();
+  NE_to_NW_railway.update();
+  NE_to_NW_railway.draw();
 
   button34.update();
   button34.draw();
@@ -440,6 +440,57 @@ void mouseClicked() {
       }
       avance_NW_to_NE.button_avance_NW_to_NE(elements_NW_NE);
   }
+
+    else if(NE_to_NW_railway.clic(mouseX, mouseY)){
+      BRelation<Integer, Integer> rail_NW_NE = machine.get_NW_to_NE(); //Watch out, here it must be inverted
+      Iterator<Pair<Integer, Integer>> it = rail_NW_NE.iterator();
+      List<Integer> elements_NW_NE = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_NW_NE.add(snd);
+      }
+
+      if (elements_NW_NE.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
+        return; //There is already a train
+      }
+      NE_to_NW_railway.button_NE_to_NW_railway();
+    }
+
+    else if (avance_NE_to_NW.clic(mouseX,mouseY)){
+      BRelation<Integer, Integer> rail_NE_NW = machine.get_NW_to_NE();
+      Iterator<Pair<Integer, Integer>> it = rail_NE_NW.iterator();
+      List<Integer> elements_NE_NW = new ArrayList<>();
+
+      while (it.hasNext()) {
+        Pair<Integer, Integer> pair = it.next();
+        Integer snd = pair.snd();
+        elements_NE_NW.add(snd);}
+
+      BRelation <Integer, Integer> stationOccupancy = machine.get_station_occupancy();
+      Iterator<Pair<Integer, Integer>> at = stationOccupancy.iterator();
+      List<Integer> occupancyList = new ArrayList<>();
+
+      while (at.hasNext()) {
+        Pair<Integer, Integer> pair = at.next();
+        Integer snd = pair.snd();
+        occupancyList.add(snd);}
+
+      Integer station_NW = occupancyList.get(2);
+
+      if(station_NW == 0 && elements_NE_NW.get(0) != 0){
+        Integer neStationOccupancy = elements_NE_NW.get(0);
+        BRelation<Integer,Integer> updatedStationOccupancy = stationOccupancy.override(new BRelation<Integer,Integer>(new Pair<Integer,Integer>(machine.NW, neStationOccupancy)));
+        machine.set_station_occupancy(updatedStationOccupancy);
+      }
+      else if (station_NW != 0 && elements_NE_NW.get(0) != 0){
+        return;
+      }
+      avance_NE_to_NW.button_avance_NE_to_NW(elements_NE_NW);
+
+    }
+
   println("Stations occupancy = " + machine.get_station_occupancy());
   println("NW_to_NE" + machine.get_NW_to_NE());
 }

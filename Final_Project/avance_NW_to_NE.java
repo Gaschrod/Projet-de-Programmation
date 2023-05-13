@@ -1,5 +1,3 @@
-
-
 public class avance_NW_to_NE{
 	/*@ spec_public */ private Raffinement2 machine; // reference to the machine 
 
