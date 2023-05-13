@@ -89,5 +89,20 @@ class Button
     machine.get_avance_NE_to_NW().run_avance_NE_to_NW(args.get(2), 0, args.get(1));
   }
 
+  void button_NW_to_SW_railway(){
+    machine.get_NW_to_SW_railway().run_NW_to_SW_railway();
+  }
+
+  void button_avance_NW_to_SW(List<Integer> args){
+    machine.get_avance_NW_to_SW().run_avance_NW_to_SW(args.get(0), args.get(1), 0);
+  }
+
+  void button_SW_to_NW_railway(){
+    machine.get_SW_to_NW_railway().run_SW_to_NW_railway();
+  }
+
+  void button_avance_SW_to_NW(List<Integer> args){
+    machine.get_avance_SW_to_NW().run_avance_SW_to_NW(args.get(2), 0, args.get(1));
+  }
   
 }
