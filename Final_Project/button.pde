@@ -42,17 +42,19 @@ class Button
 
   void draw()
   {
-    push();
-    
-    fill(fill_color);
-    stroke(border_color);
-    rect(x, y, w, h);
-    
-    fill(border_color);
-    textSize(h - 6);
-    text(label, x + 2, y + 2, w, h);
-    
-    pop();
+    if (!label.startsWith("In/out station")) {
+      push();
+      
+      fill(fill_color);
+      stroke(border_color);
+      rect(x, y, w, h);
+      
+      fill(border_color);
+      textSize(h - 6);
+      text(label, x + 2, y + 2, w, h);
+      
+      pop();
+    }
   }
   
   boolean contains(float x, float y)
