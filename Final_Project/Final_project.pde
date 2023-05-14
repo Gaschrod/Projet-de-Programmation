@@ -119,61 +119,161 @@ public void draw() {
   
   stroke(0);
   fill(0, 255, 0); // Définir la couleur de remplissage en vert
-  ellipse(220, 160, 20, 20);//haut
-  ellipse(530, 150, 20, 20);
-  ellipse(670, 150, 20, 20);
-  ellipse(980, 160, 20, 20);  
-  
-  stroke(0);
-   ellipse(220, 800, 20, 20);//bas
-   ellipse(530, 810, 20, 20);
-   ellipse(670, 810, 20, 20);
-   ellipse(980, 800, 20, 20); 
-   ellipse(1120, 800, 20, 20); 
-   ellipse(1280, 800, 20, 20); 
-   ellipse(1420, 800, 20, 20); 
-   ellipse(1580, 800, 20, 20); 
-   
-   stroke(0);
-   ellipse(120, 230, 20, 20); //gauche
-   ellipse(120, 430, 20, 20); 
-   ellipse(120, 530, 20, 20); 
-   ellipse(120, 730, 20, 20); 
-   
-   stroke(0);
-   ellipse(1080, 230, 20, 20); //droite
-   ellipse(1080, 430, 20, 20); 
-   ellipse(1080, 530, 20, 20); 
-   ellipse(1080, 730, 20, 20); 
 
-   stroke(0);
-   ellipse(220, 210, 20, 20);//diag haut gauche
-   ellipse(300,280,20,20);
-   ellipse(420,350,20,20);
-   ellipse(530,420,20,20);
-   
-   stroke(0);
-   ellipse(220, 750, 20, 20);//diag bas gauche 
-   ellipse(300,680,20,20);
-   ellipse(420,610,20,20);
-   ellipse(530,545,20,20);
-   
-   stroke(0);
-   ellipse(420,680,20,20); //transit to s 
-   ellipse(980, 760, 20, 20); 
-   
-   stroke(0);
-   ellipse(670, 420, 20, 20);//diag haut droite 
-   ellipse(780, 350 , 20, 20); 
-   ellipse(900,280,20,20);
-   ellipse(1000,230,20,20);
-   
-   stroke(0); 
-   ellipse(670, 545, 20, 20);//diag bas droite 
-   ellipse(780, 610 , 20, 20);
-   ellipse(900,680,20,20);
-   ellipse(1000,730,20,20);
+  if (machine.get_NW_to_NE().apply(1) > 0 || machine.get_NW_to_NE().apply(2) > 0 || machine.get_NW_to_NE().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(220, 160, 20, 20); // NW - NE get_NW_to_NE
+  ellipse(980, 160, 20, 20); // NE - NW
+
+  if (machine.get_secondary_occupancy().apply(machine.station1) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(530, 150, 20, 20); // Secondary 1 get_secondary_occupancy().apply(machine.station1)
+  ellipse(670, 150, 20, 20); // Secondary 1 (2)
   
+  if (machine.get_SW_to_S().apply(1) > 0 || machine.get_SW_to_S().apply(2) > 0 || machine.get_SW_to_S().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(220, 800, 20, 20); // SW - S get_SW_to_S
+  ellipse(980, 800, 20, 20); // S - SW
+
+  if (machine.get_secondary_occupancy().apply(machine.station6) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(530, 810, 20, 20); // Secondary 6 get_secondary_occupancy().apply(machine.station6)
+  ellipse(670, 810, 20, 20); // Secondary 6 (2)
+
+  if (machine.get_S_to_SE().apply(1) > 0 || machine.get_S_to_SE().apply(2) > 0 || machine.get_S_to_SE().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(1120, 800, 20, 20); // S - SE get_S_to_SE
+  ellipse(1580, 800, 20, 20); // SE - S
+
+  if (machine.get_secondary_occupancy().apply(machine.station5) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(1280, 800, 20, 20); // Secondary 5 get_secondary_occupancy().apply(machine.station5)
+  ellipse(1420, 800, 20, 20); // Secondary 5 (2)
+  
+  if (machine.get_NW_to_SW().apply(1) > 0 || machine.get_NW_to_SW().apply(2) > 0 || machine.get_NW_to_SW().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(120, 230, 20, 20); // NW - SW get_NW_to_SW
+  ellipse(120, 730, 20, 20); // SW - NW
+
+  if (machine.get_secondary_occupancy().apply(machine.station7) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(120, 430, 20, 20); // Secondary 7 get_secondary_occupancy().apply(machine.station7)
+  ellipse(120, 530, 20, 20); // Secondary 7 (2)
+  
+  if (machine.get_NE_to_S().apply(1) > 0 || machine.get_NE_to_S().apply(2) > 0 || machine.get_NE_to_S().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(1080, 230, 20, 20); // NE - S get_NE_to_S
+  ellipse(1080, 730, 20, 20); // S - NE
+
+  if (machine.get_secondary_occupancy().apply(machine.station4) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(1080, 430, 20, 20); // Secondary 4 get_secondary_occupancy().apply(machine.station4)
+  ellipse(1080, 530, 20, 20); // Secondary 4 (2)
+
+  if (machine.get_NW_to_center().apply(1) > 0 || machine.get_NW_to_center().apply(2) > 0 || machine.get_NW_to_center().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(220, 210, 20, 20); // NW - center get_NW_to_center
+  ellipse(530,420,20,20); // center - NW
+
+  if (machine.get_secondary_occupancy().apply(machine.station2) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(300,280,20,20); // Secondary 2 get_secondary_occupancy().apply(machine.station2)
+  ellipse(420,350,20,20); // Secondary 2 (2)
+  
+  if (machine.get_SW_to_transit().apply(1) > 0 || machine.get_SW_to_transit().apply(2) > 0 || machine.get_SW_to_transit().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(220, 750, 20, 20); // SW - transit get_SW_to_transit
+  ellipse(300,680,20,20); // transit - SW
+
+  if (machine.get_transit_to_center().apply(1) > 0 || machine.get_transit_to_center().apply(2) > 0 || machine.get_transit_to_center().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(420,610,20,20); // transit - center get_transit_to_center
+  ellipse(530,545,20,20); // center - transit
+  
+  if (machine.get_transit_to_S().apply(1) > 0 || machine.get_transit_to_S().apply(2) > 0 || machine.get_transit_to_S().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(420,680,20,20); // transit - S  get_transit_to_S
+  ellipse(980, 760, 20, 20); // S - transit
+  
+  if (machine.get_center_to_NE().apply(1) > 0 || machine.get_center_to_NE().apply(2) > 0 || machine.get_center_to_NE().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(670, 420, 20, 20); // center - NE get_center_to_NE
+  ellipse(1000,230,20,20); // NE - center
+
+  if (machine.get_secondary_occupancy().apply(machine.station3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(780, 350 , 20, 20); // Secondary 3 get_secondary_occupancy().apply(machine.station3)
+  ellipse(900,280,20,20); // Secondary 3 (2)
+  
+  if (machine.get_center_to_S().apply(1) > 0 || machine.get_center_to_S().apply(2) > 0 || machine.get_center_to_S().apply(3) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(670, 545, 20, 20); // center - S get_center_to_S
+  ellipse(1000,730,20,20); // S - center
+
+  if (machine.get_secondary_occupancy().apply(machine.station8) > 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(780, 610 , 20, 20); // Secondary 8 get_secondary_occupancy().apply(machine.station8)
+  ellipse(900,680,20,20); // Secondary 8 (2)
+  
+
+  fill(0, 0, 0);
   strokeWeight(5);
   stroke(255, 0, 200); // Définit la couleur rose
   line(150,210,150,240); // Dessine aiguillage 30px
