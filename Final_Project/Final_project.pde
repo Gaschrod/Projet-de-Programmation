@@ -548,7 +548,7 @@ void drawGare() {
     NW_to_NE_occupancy = machine.get_NW_to_NE();
     print_train_on_rails(NW_to_NE_occupancy, 330, 170, 430, 170, 830, 170);
     SW_to_transit_occupancy = machine.get_SW_to_transit();
-    print_train_on_rails(SW_to_transit_occupancy, 200, 700, 230, 670, 430, 540);
+    print_train_on_rails(SW_to_transit_occupancy, 180, 720, 200, 700, 230, 670);
   }
 }
 
