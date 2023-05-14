@@ -117,12 +117,27 @@ public void draw() {
   line(900,300,1000,210);
   line(400,660,1000,750);
   
-  stroke(0);
-  fill(0, 255, 0); // Définir la couleur de remplissage en vert
-  ellipse(220, 160, 20, 20);//haut
+  light_NW_NE.draw();
+  light_NE_NW.draw();
+
+  if (light_NW_NE.isOn) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(220, 160, 20, 20);
+
+  if (light_NE_NW.isOn) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
+  ellipse(980, 160, 20, 20);
+
+  fill(0, 255, 0);
   ellipse(530, 150, 20, 20);
   ellipse(670, 150, 20, 20);
-  ellipse(980, 160, 20, 20);  
+  
   
   stroke(0);
    ellipse(220, 800, 20, 20);//bas
@@ -213,7 +228,7 @@ public void draw() {
   line(770,580,850,600);//bas droite
   line(900,625,930,685);
   
-    // Buttons
+  // Buttons
   spawn_S.update();
   spawn_S.draw();
 
@@ -366,13 +381,6 @@ public void draw() {
 
   S_to_transit_railway.update();
   S_to_transit_railway.draw();
-
-  /*button52.update();
-  button52.draw();
-
-  button53.update();
-  button53.draw();*/
-
 
   //pushMatrix();
   //translate(0, 0);
@@ -1543,38 +1551,13 @@ void mouseClicked() {
         return;
       }
       avance_S_to_transit.button_avance_S_to_transit(elements_S_transit);
-    } else if (in_out_station1.clic(mouseX, mouseY)) {
-        int temporary = machine.get_secondary_occupancy().apply(machine.station1);
-        int rail = machine.get_NW_to_NE().apply(2);
-        machine.get_in_out_station1().run_in_out_station1(temporary, rail, machine.green, machine.green);
-    } else if (in_out_station2.clic(mouseX, mouseY)) {
-      int temporary = machine.get_secondary_occupancy().apply(machine.station2);
-      int rail = machine.get_NW_to_center().apply(2);
-      machine.get_in_out_station2().run_in_out_station2(temporary, rail, machine.green, machine.green);
-    } else if (in_out_station3.clic(mouseX, mouseY)) {
-      int temporary = machine.get_secondary_occupancy().apply(machine.station3);
-      int rail = machine.get_center_to_NE().apply(2);
-      machine.get_in_out_station3().run_in_out_station3(temporary, rail, machine.green, machine.green);
-    } else if (in_out_station4.clic(mouseX, mouseY)) {
-      int temporary = machine.get_secondary_occupancy().apply(machine.station4);
-      int rail = machine.get_NE_to_S().apply(2);
-      machine.get_in_out_station4().run_in_out_station4(temporary, rail, machine.green, machine.green);
-    } else if (in_out_station5.clic(mouseX, mouseY)) {
-      int temporary = machine.get_secondary_occupancy().apply(machine.station5);
-      int rail = machine.get_S_to_SE().apply(2);
-      machine.get_in_out_station5().run_in_out_station5(temporary, rail, machine.green, machine.green);
-    } else if (in_out_station6.clic(mouseX, mouseY)) {
-      int temporary = machine.get_secondary_occupancy().apply(machine.station6);
-      int rail = machine.get_SW_to_S().apply(2);
-      machine.get_in_out_station6().run_in_out_station6(temporary, rail, machine.green, machine.green);
-    } else if (in_out_station7.clic(mouseX, mouseY)) {
-      int temporary = machine.get_secondary_occupancy().apply(machine.station7);
-      int rail = machine.get_NW_to_SW().apply(2);
-      machine.get_in_out_station7().run_in_out_station7(temporary, rail, machine.green, machine.green);
-    } else if (in_out_station8.clic(mouseX, mouseY)) {
-      int temporary = machine.get_secondary_occupancy().apply(machine.station8);
-      int rail = machine.get_center_to_S().apply(2);
-      machine.get_in_out_station8().run_in_out_station8(temporary, rail, machine.green, machine.green);
     }
 
+  else if (light_NW_NE.contains(mouseX, mouseY)) {
+    light_NW_NE.handleClick();
+    light_NE_NW.handleClick();
+  } else if (light_NE_NW.contains(mouseX, mouseY)) {
+    light_NE_NW.handleClick();
+    light_NW_NE.handleClick();
+  }
 }
