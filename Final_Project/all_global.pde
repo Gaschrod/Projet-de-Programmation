@@ -51,8 +51,7 @@ Button transit_to_center_railway = new Button("transit-Center railway", 1300, 94
 Button center_to_transit_railway = new Button("Center-transit railway", 1300, 975, 100, 20);
 Button transit_to_S_railway = new Button("transit-S railway", 1410, 880, 100, 20);
 Button S_to_transit_railway = new Button("S-transit railway", 1410, 910, 100, 20);
-//Button button52 = new Button("3", 1410, 945, 100, 20);
-//Button button53 = new Button("4", 1410, 975, 100, 20);
+
 Button in_out_station1 = new Button("In/out station 1", 550,120,100,60);
 Button in_out_station2 = new Button("In/out station 2", 300,300,100,60);
 Button in_out_station3 = new Button("In/out station 3", 800,300,100,60);
