@@ -786,7 +786,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_NW_center.add(snd);
       }
-      if (elements_NW_center.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_NW_center.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       NW_to_center_railway.button_NW_to_center_railway();
@@ -834,7 +834,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_center_NW.add(snd);
       }
-      if (elements_center_NW.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_center_NW.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       center_to_NW_railway.button_center_to_NW_railway();
@@ -882,7 +882,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_center_NE.add(snd);
       }
-      if (elements_center_NE.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_center_NE.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       center_to_NE_railway.button_center_to_NE_railway();
@@ -930,7 +930,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_NE_center.add(snd);
       }
-      if (elements_NE_center.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_NE_center.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       NE_to_center_railway.button_NE_to_center_railway();
@@ -978,7 +978,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_NE_S.add(snd);
       }
-      if (elements_NE_S.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_NE_S.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       NE_to_S_railway.button_NE_to_S_railway();
@@ -1026,7 +1026,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_S_NE.add(snd);
       }
-      if (elements_S_NE.get(0) != 0){ //We check the last element, has NE is 'at the end' of the railway
+      if (elements_S_NE.get(2) != 0){ //We check the last element, has NE is 'at the end' of the railway
         return; //There is already a train
       }
       S_to_NE_railway.button_S_to_NE_railway();
@@ -1361,7 +1361,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_center_S.add(snd);
       }
-      if (elements_center_S.get(2) != 0){
+      if (elements_center_S.get(0) != 0){
         return; //There is already a train
       }
       center_to_S_railway.button_center_to_S_railway();
@@ -1409,7 +1409,7 @@ void mouseClicked() {
         Integer snd = pair.snd();
         elements_S_center.add(snd);
       }
-      if (elements_S_center.get(0) != 0){
+      if (elements_S_center.get(2) != 0){
         return; //There is already a train
       }
       S_to_center_railway.button_S_to_center_railway();
