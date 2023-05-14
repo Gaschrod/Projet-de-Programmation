@@ -117,41 +117,13 @@ public void draw() {
   line(900,300,1000,210);
   line(400,660,1000,750);
   
-  light_NW_NE.draw();
-  light_NE_NW.draw();
-
-  if (light_NW_NE.isOn) {
-    fill(255, 0, 0);
-  } else {
-    fill(0, 255, 0);
-  }
-  ellipse(220, 160, 20, 20);
-
-  if (light_NE_NW.isOn) {
-    fill(255, 0, 0);
-  } else {
-    fill(0, 255, 0);
-  }
+  fill(0,255,0);
+  stroke(0);
+  ellipse(220, 160, 20, 20); //haut
   ellipse(980, 160, 20, 20);
-
-  light_secondary1.draw();
-  light_secondary2.draw();
-
-  if (light_secondary1.isOn) {
-    fill(255, 0, 0);
-  } else {
-    fill(0, 255, 0);
-  }
   ellipse(530, 150, 20, 20);
-
-  if (light_secondary2.isOn) {
-    fill(255, 0, 0);
-  } else {
-    fill(0, 255, 0);
-  }
   ellipse(670, 150, 20, 20);
   
-  fill(0, 255, 0);
   stroke(0);
    ellipse(220, 800, 20, 20);//bas
    ellipse(530, 810, 20, 20);
@@ -1565,20 +1537,4 @@ void mouseClicked() {
       }
       avance_S_to_transit.button_avance_S_to_transit(elements_S_transit);
     }
-
-  else if (light_NW_NE.contains(mouseX, mouseY)) {
-    light_NW_NE.handleClick();
-    light_NE_NW.handleClick();
-  } else if (light_NE_NW.contains(mouseX, mouseY)) {
-    light_NE_NW.handleClick();
-    light_NW_NE.handleClick();
-  }
-
-  else if (light_secondary1.contains(mouseX, mouseY)){
-    light_secondary1.handleClick();
-    light_secondary2.handleClick();
-  } else if (light_secondary2.contains(mouseX, mouseY)){
-    light_secondary2.handleClick();
-    light_secondary1.handleClick();
-  }
 }
