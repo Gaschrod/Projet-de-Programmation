@@ -63,7 +63,8 @@ Button in_out_station8 = new Button("In/out station 8", 800,600,100,60);
 
 LightButton light_NW_NE = new LightButton(220, 160, 20);
 LightButton light_NE_NW = new LightButton(980, 160, 20);
-
+LightButton light_secondary1 = new LightButton(530, 150, 20);
+LightButton light_secondary2 = new LightButton(670, 150, 20);
 
 BRelation<Integer,Integer> station_occupancy;
 BRelation<Integer,Integer> secondary_occupancy;

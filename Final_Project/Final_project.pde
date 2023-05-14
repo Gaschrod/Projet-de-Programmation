@@ -134,11 +134,24 @@ public void draw() {
   }
   ellipse(980, 160, 20, 20);
 
-  fill(0, 255, 0);
+  light_secondary1.draw();
+  light_secondary2.draw();
+
+  if (light_secondary1.isOn) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
   ellipse(530, 150, 20, 20);
+
+  if (light_secondary2.isOn) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 255, 0);
+  }
   ellipse(670, 150, 20, 20);
   
-  
+  fill(0, 255, 0);
   stroke(0);
    ellipse(220, 800, 20, 20);//bas
    ellipse(530, 810, 20, 20);
@@ -1559,5 +1572,13 @@ void mouseClicked() {
   } else if (light_NE_NW.contains(mouseX, mouseY)) {
     light_NE_NW.handleClick();
     light_NW_NE.handleClick();
+  }
+
+  else if (light_secondary1.contains(mouseX, mouseY)){
+    light_secondary1.handleClick();
+    light_secondary2.handleClick();
+  } else if (light_secondary2.contains(mouseX, mouseY)){
+    light_secondary2.handleClick();
+    light_secondary1.handleClick();
   }
 }
