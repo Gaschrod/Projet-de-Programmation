@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="Station" org.eventb.core.type="ℙ(Station)"/>
+        <org.eventb.core.poIdentifier name="trafficlight" org.eventb.core.type="ℙ(trafficlight)"/>
+        <org.eventb.core.poIdentifier name="railway" org.eventb.core.type="ℙ(railway)"/>
+        <org.eventb.core.poIdentifier name="S" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="red" org.eventb.core.type="trafficlight"/>
+        <org.eventb.core.poIdentifier name="Secondary_station" org.eventb.core.type="ℙ(Station)"/>
+        <org.eventb.core.poIdentifier name="NOTRAIN" org.eventb.core.type="railway"/>
+        <org.eventb.core.poIdentifier name="NE" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="NW" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="BUSY" org.eventb.core.type="railway"/>
+        <org.eventb.core.poIdentifier name="SE" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="SW" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="green" org.eventb.core.type="trafficlight"/>
+        <org.eventb.core.poIdentifier name="center" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station8" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station4" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station5" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station6" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station7" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station1" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station2" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="station3" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="transit" org.eventb.core.type="Station"/>
+        <org.eventb.core.poIdentifier name="Main_station" org.eventb.core.type="ℙ(Station)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/InfoTraffic/Station.bpo|org.eventb.core.poFile#Station|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(Station,{NW},{SW},{center},{NE},{transit},{S},{SE},{station1},{station2},{station3},{station4},{station5},{station6},{station7},{station8})" org.eventb.core.source="/InfoTraffic/Station.buc|org.eventb.core.contextFile#Station|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="Main_station⊆Station" org.eventb.core.source="/InfoTraffic/Station.buc|org.eventb.core.contextFile#Station|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="Main_station={NW,SW,center,NE,transit,S,SE}" org.eventb.core.source="/InfoTraffic/Station.buc|org.eventb.core.contextFile#Station|org.eventb.core.axiom#."/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="Secondary_station⊆Station" org.eventb.core.source="/InfoTraffic/Station.buc|org.eventb.core.contextFile#Station|org.eventb.core.axiom#\/"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="Secondary_station={station1,station2,station3,station4,station5,station6,station7,station8}" org.eventb.core.source="/InfoTraffic/Station.buc|org.eventb.core.contextFile#Station|org.eventb.core.axiom#?"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="partition(trafficlight,{green},{red})" org.eventb.core.source="/InfoTraffic/Station.buc|org.eventb.core.contextFile#Station|org.eventb.core.axiom#_XuP7wN9fEe2l7pnb9eZyqg"/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="partition(railway,{NOTRAIN},{BUSY})" org.eventb.core.source="/InfoTraffic/Station.buc|org.eventb.core.contextFile#Station|org.eventb.core.axiom#_XuQi0N9fEe2l7pnb9eZyqg"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1682283895913" org.eventb.texttools.text_representation="machine 2er_raffinement refines 1er_raffinement  sees Train Station&#10;&#10;variables NW_to_NE // Has 1 secondary&#10;          NW_to_center // Has 1 secondary&#10;          NW_to_SW // Has 1 secondary&#10;          SW_to_transit // /&#10;          SW_to_S // Has 1 secondary&#10;          center_to_NE // Has 1 secondary&#10;          transit_to_center // /&#10;          S_to_SE // Has 1 secondary&#10;          center_to_S // Has 1 secondary&#10;          transit_to_S // /&#10;          NE_to_S // Has 1 secondary&#10;          station_occupancy number_train secondary_occupancy Traffic_light_station rail stop_in_1 stop_in_2 stop_in_3 stop_in_4 stop_in_5 stop_in_6 stop_in_7 stop_in_8 NW_NE_available NW_center_available NW_SW_available SW_transit_available SW_S_available center_NE_available transit_center_available S_SE_available center_S_available transit_S_available NE_S_available&#10;&#10;invariants&#10;  @inv1 stop_in_1 ∈ BOOL&#10;  @inv2 stop_in_2 ∈ BOOL&#10;  @inv3 stop_in_3 ∈ BOOL&#10;  @inv4 stop_in_4 ∈ BOOL&#10;  @inv5 stop_in_5 ∈ BOOL&#10;  @inv7 stop_in_6 ∈ BOOL&#10;  @inv6 stop_in_7 ∈ BOOL&#10;  @inv8 stop_in_8 ∈ BOOL&#10;  @inv9 NW_NE_available ∈ (1‥2) → BOOL&#10;  @inv10 NW_center_available ∈ (1‥2) → BOOL&#10;  @inv11 NW_SW_available ∈ (1‥2) → BOOL&#10;  @inv12 SW_transit_available ∈ (1‥2) → BOOL&#10;  @inv13 SW_S_available ∈ (1‥2) → BOOL&#10;  @inv14 center_NE_available ∈ (1‥2) → BOOL&#10;  @inv15 transit_center_available ∈ (1‥2) → BOOL&#10;  @inv19 S_SE_available ∈ (1‥2) → BOOL&#10;  @inv16 center_S_available ∈ (1‥2) → BOOL&#10;  @inv17 transit_S_available ∈ (1‥2) → BOOL&#10;  @inv18 NE_S_available ∈ (1‥2) → BOOL&#10;&#10;events&#10;  event INITIALISATION extends INITIALISATION&#10;    then&#10;      @act36 stop_in_1 ≔ FALSE&#10;      @act37 stop_in_2 ≔ FALSE&#10;      @act38 stop_in_3 ≔ FALSE&#10;      @act43 stop_in_4 ≔ FALSE&#10;      @act42 stop_in_5 ≔ FALSE&#10;      @act41 stop_in_6 ≔ FALSE&#10;      @act40 stop_in_7 ≔ FALSE&#10;      @act39 stop_in_8 ≔ FALSE&#10;      @act44 NW_NE_available ≔ {1 ↦ TRUE, 2 ↦ TRUE}&#10;      @act45 NW_center_available ≔ {1 ↦ TRUE, 2 ↦ FALSE}&#10;      @act46 NW_SW_available ≔ {1 ↦ FALSE, 2 ↦ TRUE}&#10;      @act47 SW_transit_available ≔ {1 ↦ FALSE, 2 ↦ TRUE}&#10;      @act48 SW_S_available ≔ {1 ↦ TRUE, 2 ↦ FALSE}&#10;      @act49 center_NE_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}&#10;      @act50 transit_center_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}&#10;      @act51 S_SE_available ≔ {1 ↦ FALSE, 2 ↦ TRUE}&#10;      @act52 center_S_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}&#10;      @act53 transit_S_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}&#10;      @act54 NE_S_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}&#10;  end&#10;&#10;  event spawn_train extends spawn_train&#10;  end&#10;&#10;  event NW_to_SW_railway extends NW_to_SW_railway&#10;    where&#10;      @grd10 NW_SW_available(1) = TRUE&#10;  end&#10;&#10;  event SW_to_NW_railway extends SW_to_NW_railway&#10;    where&#10;      @grd10 NW_SW_available(2) = TRUE&#10;  end&#10;&#10;  event NW_to_NE_railway extends NW_to_NE_railway&#10;    where&#10;      @grd10 NW_NE_available(2) = TRUE&#10;  end&#10;&#10;  event NE_to_NW_railway extends NE_to_NW_railway&#10;    where&#10;      @grd10 NW_NE_available(1) = TRUE&#10;  end&#10;&#10;  event NW_to_center_railway extends NW_to_center_railway&#10;    where&#10;      @grd10 NW_center_available(2) = TRUE&#10;  end&#10;&#10;  event center_to_NW_railway extends center_to_NW_railway&#10;    where&#10;      @grd10 NW_center_available(1) = TRUE&#10;  end&#10;&#10;  event SW_to_transit_railway extends SW_to_transit_railway&#10;    where&#10;      @grd10 SW_transit_available(1) = TRUE&#10;  end&#10;&#10;  event transit_to_SW_railway extends transit_to_SW_railway&#10;    where&#10;      @grd10 SW_transit_available(2) = TRUE&#10;  end&#10;&#10;  event transit_to_center_railway extends transit_to_center_railway&#10;    where&#10;      @grd10 transit_center_available(2) = TRUE&#10;  end&#10;&#10;  event center_to_transit_railway extends center_to_transit_railway&#10;    where&#10;      @grd10 transit_center_available(1) = TRUE&#10;  end&#10;&#10;  event center_to_NE_railway extends center_to_NE_railway&#10;    where&#10;      @grd10 center_NE_available(1) = TRUE&#10;  end&#10;&#10;  event NE_to_center_railway extends NE_to_center_railway&#10;    where&#10;      @grd10 center_NE_available(2) = TRUE&#10;  end&#10;&#10;  event NE_to_S_railway extends NE_to_S_railway&#10;    where&#10;      @grd10 NE_S_available(1) = TRUE&#10;  end&#10;&#10;  event S_to_NE_railway extends S_to_NE_railway&#10;    where&#10;      @grd10 NE_S_available(2) = TRUE&#10;  end&#10;&#10;  event S_to_SE_railway extends S_to_SE_railway&#10;    where&#10;      @grd10 S_SE_available(1) = TRUE&#10;  end&#10;&#10;  event SE_to_S_railway extends SE_to_S_railway&#10;    where&#10;      @grd10 S_SE_available(2) = TRUE&#10;  end&#10;&#10;  event center_to_S_railway extends center_to_S_railway&#10;    where&#10;      @grd10 center_S_available(1) = TRUE&#10;  end&#10;&#10;  event S_to_center_railway extends S_to_center_railway&#10;    where&#10;      @grd10 center_S_available(2) = TRUE&#10;  end&#10;&#10;  event transit_to_S_railway extends transit_to_S_railway&#10;    where&#10;      @grd10 transit_S_available(2) = TRUE&#10;  end&#10;&#10;  event S_to_transit_railway extends S_to_transit_railway&#10;    where&#10;      @grd10 transit_S_available(1) = TRUE&#10;  end&#10;&#10;  event SW_to_S_railway extends SW_to_S_railway&#10;    where&#10;      @grd10 SW_S_available(2) = TRUE&#10;  end&#10;&#10;  event S_to_SW_railway extends S_to_SW_railway&#10;    where&#10;      @grd10 SW_S_available(1) = TRUE&#10;  end&#10;&#10;  event avance_S_to_NE extends avance_S_to_NE&#10;    where&#10;      @grd11 stop_in_4 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NE_to_S(1) ≠ NOTHING ⇒ NE_S_available(1) = TRUE&#10;  end&#10;&#10;  event avance_S_to_SE extends avance_S_to_SE&#10;    where&#10;      @grd11 stop_in_5 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 S_to_SE(3) ≠ NOTHING ⇒ S_SE_available(2) = TRUE&#10;  end&#10;&#10;  event avance_SE_to_S extends avance_SE_to_S&#10;    where&#10;      @grd11 stop_in_5 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 S_to_SE(1) ≠ NOTHING ⇒ S_SE_available(1) = TRUE&#10;  end&#10;&#10;  event avance_NW_to_SW extends avance_NW_to_SW&#10;    where&#10;      @grd11 stop_in_7 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NW_to_SW(3) ≠ NOTHING ⇒ NW_SW_available(2) = TRUE&#10;  end&#10;&#10;  event avance_SW_to_NW extends avance_SW_to_NW&#10;    where&#10;      @grd12 stop_in_7 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NW_to_SW(1) ≠ NOTHING ⇒ NW_SW_available(1) = TRUE&#10;  end&#10;&#10;  event avance_SW_to_transit extends avance_SW_to_transit&#10;  &#9;where&#10;  &#9;  @grd12 SW_to_transit(3) ≠ NOTHING ⇒ SW_transit_available(2) = TRUE&#10;  end&#10;&#10;  event avance_transit_to_SW extends avance_transit_to_SW&#10;  where&#10;  &#9;  @grd12 SW_to_transit(1) ≠ NOTHING ⇒ SW_transit_available(1) = TRUE&#10;  end&#10;&#10;  event avance_SW_to_S extends avance_SW_to_S&#10;    where&#10;      @grd11 stop_in_6 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 SW_to_S(3) ≠ NOTHING ⇒ SW_S_available(1) = TRUE&#10;  end&#10;&#10;  event avance_S_to_SW extends avance_S_to_SW&#10;    where&#10;      @grd11 stop_in_6 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 SW_to_S(1) ≠ NOTHING ⇒ SW_S_available(2) = TRUE&#10;  end&#10;&#10;  event avance_NW_to_center extends avance_NW_to_center&#10;    where&#10;      @grd11 stop_in_2 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NW_to_center(3) ≠ NOTHING ⇒ NW_center_available(1) = TRUE&#10;  end&#10;&#10;  event avance_center_to_NW extends avance_center_to_NW&#10;    where&#10;      @grd11 stop_in_2 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NW_to_center(1) ≠ NOTHING ⇒ NW_center_available(2) = TRUE&#10;  end&#10;&#10;  event avance_NW_to_NE extends avance_NW_to_NE&#10;    where&#10;      @grd11 stop_in_1 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NW_to_NE(3) ≠ NOTHING ⇒ NW_NE_available(1) = TRUE&#10;  end&#10;&#10;  event avance_NE_to_NW extends avance_NE_to_NW&#10;    where&#10;      @grd11 stop_in_1 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NW_to_NE(1) ≠ NOTHING ⇒ NW_NE_available(2) = TRUE&#10;  end&#10;&#10;  event avance_center_to_NE extends avance_center_to_NE&#10;    where&#10;      @grd11 stop_in_3 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 center_to_NE(3) ≠ NOTHING ⇒ center_NE_available(2) = TRUE&#10;  end&#10;&#10;  event avance_NE_to_center extends avance_NE_to_center&#10;    where&#10;      @grd11 stop_in_3 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 center_to_NE(1) ≠ NOTHING ⇒ center_NE_available(1) = TRUE&#10;  end&#10;&#10;  event avance_transit_to_center extends avance_transit_to_center&#10;  &#9;where&#10;  &#9;  @grd12 transit_to_center(3) ≠ NOTHING ⇒ transit_center_available(1) = TRUE&#10;  end&#10;&#10;  event avance_center_to_transit extends avance_center_to_transit&#10;  &#9;where&#10;  &#9;  @grd12 transit_to_center(1) ≠ NOTHING ⇒ transit_center_available(2) = TRUE&#10;  end&#10;&#10;  event avance_transit_to_S extends avance_transit_to_S&#10;  &#9;where&#10;  &#9;  @grd12 transit_to_S(3) ≠ NOTHING ⇒ transit_S_available(2) = TRUE&#10;  end&#10;&#10;  event avance_S_to_transit extends avance_S_to_transit&#10;    where&#10;  &#9;  @grd12 transit_to_S(1) ≠ NOTHING ⇒ transit_S_available(1) = TRUE&#10;  end&#10;&#10;  event avance_center_to_S extends avance_center_to_S&#10;    where&#10;      @grd11 stop_in_8 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 center_to_S(3) ≠ NOTHING ⇒ center_S_available(2) = TRUE&#10;  end&#10;&#10;  event avance_S_to_center extends avance_S_to_center&#10;    where&#10;      @grd11 stop_in_8 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 center_to_S(1) ≠ NOTHING ⇒ center_S_available(1) = TRUE&#10;  end&#10;&#10;  event avance_NE_to_S extends avance_NE_to_S&#10;    where&#10;      @grd11 stop_in_4 = FALSE // The switch must no point to the secondary station if we want to avance&#10;      @grd12 NE_to_S(3) ≠ NOTHING ⇒ NE_S_available(2) = TRUE&#10;  end&#10;&#10;  event in_out_station1 // Swap the value of the station and the railway&#10;  extends in_out_station1&#10;    where&#10;      @grd13 stop_in_1 = TRUE&#10;  end&#10;&#10;  event in_out_station2 // Swap the value of the station and the railway&#10;  extends in_out_station2&#10;    where&#10;      @grd13 stop_in_2 = TRUE&#10;  end&#10;&#10;  event in_out_station3 // Swap the value of the station and the railway&#10;  extends in_out_station3&#10;    where&#10;      @grd13 stop_in_3 = TRUE&#10;  end&#10;&#10;  event in_out_station4 // Swap the value of the station and the railway&#10;  extends in_out_station4&#10;    where&#10;      @grd13 stop_in_4 = TRUE&#10;  end&#10;&#10;  event in_out_station5 // Swap the value of the station and the railway&#10;  extends in_out_station5&#10;    where&#10;      @grd13 stop_in_5 = TRUE&#10;  end&#10;&#10;  event in_out_station6 // Swap the value of the station and the railway&#10;  extends in_out_station6&#10;    where&#10;      @grd13 stop_in_6 = TRUE&#10;  end&#10;&#10;  event in_out_station7 // Swap the value of the station and the railway&#10;  extends in_out_station7&#10;    where&#10;      @grd13 stop_in_7 = TRUE&#10;  end&#10;&#10;  event in_out_station8 // Swap the value of the station and the railway&#10;  extends in_out_station8&#10;    where&#10;      @grd13 stop_in_8 = TRUE&#10;  end&#10;&#10;  event NW_to_SW_enable&#10;    where&#10;      @grd1 NW_SW_available(1) = FALSE&#10;    then&#10;      @act1 NW_SW_available(1) ≔ TRUE&#10;      @act2 NW_NE_available(2) ≔ FALSE&#10;  end&#10;&#10;  event SW_to_NW_enable&#10;    where&#10;      @grd1 NW_SW_available(2) = FALSE&#10;    then&#10;      @act1 NW_SW_available(2) ≔ TRUE&#10;      @act2 SW_transit_available(1) ≔ FALSE&#10;      @act3 SW_S_available(2) ≔ FALSE&#10;  end&#10;&#10;  event NW_to_NE_enable&#10;    where&#10;      @grd1 NW_NE_available(2) = FALSE&#10;    then&#10;      @act1 NW_NE_available(2) ≔ TRUE&#10;      @act2 NW_SW_available(1) ≔ FALSE&#10;      @act3 NW_center_available(2) ≔ FALSE&#10;  end&#10;&#10;  event NE_to_NW_enable&#10;    where&#10;      @grd1 NW_NE_available(2) = FALSE&#10;    then&#10;      @act1 NW_NE_available(2) ≔ TRUE&#10;      @act2 center_NE_available(2) ≔ FALSE&#10;      @act3 NE_S_available(1) ≔ FALSE&#10;  end&#10;&#10;  event NW_to_center_enable&#10;    where&#10;      @grd1 NW_center_available(2) = FALSE&#10;    then&#10;      @act1 NW_center_available(2) ≔ TRUE&#10;      @act2 NW_NE_available(2) ≔ FALSE&#10;      @act3 NW_SW_available(1) ≔ FALSE&#10;  end&#10;&#10;  event center_to_NW_enable&#10;    where&#10;      @grd1 NW_center_available(1) = FALSE&#10;    then&#10;      @act1 NW_center_available(1) ≔ TRUE&#10;      @act2 transit_center_available(1) ≔ FALSE&#10;      @act3 center_S_available(1) ≔ FALSE&#10;      @act4 center_NE_available(1) ≔ FALSE&#10;  end&#10;&#10;  event SW_to_transit_enable&#10;    where&#10;      @grd1 SW_transit_available(1) = FALSE&#10;    then&#10;      @act1 SW_transit_available(1) ≔ TRUE&#10;      @act2 NW_SW_available(2) ≔ FALSE&#10;      @act3 SW_S_available(2) ≔ FALSE&#10;  end&#10;&#10;  event transit_to_SW_enable&#10;    where&#10;      @grd1 SW_transit_available(2) = FALSE&#10;    then&#10;      @act1 SW_transit_available(2) ≔ TRUE&#10;      @act2 transit_S_available(2) ≔ FALSE&#10;      @act3 transit_center_available(2) ≔ FALSE&#10;  end&#10;&#10;  event transit_to_center_enable&#10;    where&#10;      @grd1 transit_center_available(2) = FALSE&#10;    then&#10;      @act1 transit_center_available(2) ≔ TRUE&#10;      @act2 SW_transit_available(2) ≔ FALSE&#10;      @act3 transit_S_available(2) ≔ FALSE&#10;  end&#10;&#10;  event center_to_transit_enable&#10;    where&#10;      @grd1 transit_center_available(1) = FALSE&#10;    then&#10;      @act1 transit_center_available(1) ≔ TRUE&#10;      @act2 center_S_available(1) ≔ FALSE&#10;      @act3 center_NE_available(1) ≔ FALSE&#10;      @act4 NW_center_available(1) ≔ FALSE&#10;  end&#10;&#10;  event center_to_NE_enable&#10;    where&#10;      @grd1 center_NE_available(1) = FALSE&#10;    then&#10;      @act1 center_NE_available(1) ≔ TRUE&#10;      @act2 NW_center_available(1) ≔ FALSE&#10;      @act3 transit_center_available(1) ≔ FALSE&#10;      @act4 center_S_available(1) ≔ FALSE&#10;  end&#10;&#10;  event NE_to_center_enable&#10;    where&#10;      @grd1 center_NE_available(2) = FALSE&#10;    then&#10;      @act1 center_NE_available(2) ≔ TRUE&#10;      @act2 NW_NE_available(1) ≔ FALSE&#10;      @act3 NE_S_available(1) ≔ FALSE&#10;  end&#10;&#10;  event NE_to_S_enable&#10;    where&#10;      @grd1 NE_S_available(1) = FALSE&#10;    then&#10;      @act1 NE_S_available(1) ≔ TRUE&#10;      @act2 NW_NE_available(1) ≔ FALSE&#10;      @act3 center_NE_available(2) ≔ FALSE&#10;  end&#10;&#10;  event S_to_NE_enable&#10;    where&#10;      @grd1 NE_S_available(2) = FALSE&#10;    then&#10;      @act1 NE_S_available(2) ≔ TRUE&#10;      @act2 center_S_available(2) ≔ FALSE&#10;      @act3 transit_S_available(1) ≔ FALSE&#10;      @act4 SW_S_available(1) ≔ FALSE&#10;      @act5 S_SE_available(1) ≔ FALSE&#10;  end&#10;&#10;  event S_to_SE_enable&#10;    where&#10;      @grd1 S_SE_available(1) = FALSE&#10;    then&#10;      @act1 S_SE_available(1) ≔ TRUE&#10;      @act2 NE_S_available(2) ≔ FALSE&#10;      @act3 center_S_available(2) ≔ FALSE&#10;      @act4 transit_S_available(1) ≔ FALSE&#10;      @act5 SW_S_available(1) ≔ FALSE&#10;  end&#10;&#10;  event center_to_S_enable&#10;    where&#10;      @grd1 center_S_available(1) = FALSE&#10;    then&#10;      @act1 center_S_available(1) ≔ TRUE&#10;      @act2 transit_center_available(1) ≔ FALSE&#10;      @act3 NW_center_available(1) ≔ FALSE&#10;      @act4 center_NE_available(1) ≔ FALSE&#10;  end&#10;&#10;  event S_to_center_enable&#10;    where&#10;      @grd1 center_S_available(2) = FALSE&#10;    then&#10;      @act1 center_S_available(2) ≔ TRUE&#10;      @act2 transit_S_available(1) ≔ FALSE&#10;      @act3 SW_S_available(1) ≔ FALSE&#10;      @act4 S_SE_available(1) ≔ FALSE&#10;      @act5 NE_S_available(2) ≔ FALSE&#10;  end&#10;&#10;  event transit_to_S_enable&#10;    where&#10;      @grd1 transit_S_available(2) = FALSE&#10;    then&#10;      @act1 transit_S_available(2) ≔ TRUE&#10;      @act2 SW_transit_available(2) ≔ FALSE&#10;      @act3 transit_center_available(2) ≔ FALSE&#10;  end&#10;&#10;  event S_to_transit_enable&#10;    where&#10;      @grd1 transit_S_available(1) = FALSE&#10;    then&#10;      @act1 transit_S_available(1) ≔ TRUE&#10;      @act2 center_S_available(2) ≔ FALSE&#10;      @act3 NE_S_available(2) ≔ FALSE&#10;      @act4 S_SE_available(1) ≔ FALSE&#10;      @act5 SW_S_available(1) ≔ FALSE&#10;  end&#10;&#10;  event SW_to_S_enable&#10;    where&#10;      @grd1 SW_S_available(2) = FALSE&#10;    then&#10;      @act1 SW_S_available(2) ≔ TRUE&#10;      @act2 SW_transit_available(1) ≔ FALSE&#10;      @act3 NW_SW_available(2) ≔ FALSE&#10;  end&#10;&#10;  event S_to_SW_enable&#10;    where&#10;      @grd1 SW_S_available(1) = FALSE&#10;    then&#10;      @act1 SW_S_available(1) ≔ TRUE&#10;      @act2 transit_S_available(1) ≔ FALSE&#10;      @act3 center_S_available(2) ≔ FALSE&#10;      @act4 NE_S_available(2) ≔ FALSE&#10;      @act5 S_SE_available(1) ≔ FALSE&#10;  end&#10;&#10;  event station1_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_1 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_1 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_1 ≔  change_value&#10;  end&#10;&#10;  event station2_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_2 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_2 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_2 ≔  change_value&#10;  end&#10;&#10;  event station3_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_3 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_3 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_3 ≔  change_value&#10;  end&#10;&#10;  event station4_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_4 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_4 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_4 ≔  change_value&#10;  end&#10;&#10;  event station5_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_5 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_5 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_5 ≔  change_value&#10;  end&#10;&#10;  event station6_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_6 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_6 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_6 ≔  change_value&#10;  end&#10;&#10;  event station7_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_7 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_7 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_7 ≔  change_value&#10;  end&#10;&#10;  event station8_switch&#10;    any change_value&#10;    where&#10;      @grd1 change_value ∈ BOOL&#10;      @grd2 stop_in_8 = TRUE ⇒ change_value = FALSE&#10;      @grd3 stop_in_8 = FALSE ⇒ change_value = TRUE&#10;    then&#10;      @act1 stop_in_8 ≔  change_value&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="Raffinement1"/>
+    <org.eventb.core.seesContext name="(" org.eventb.core.target="Train"/>
+    <org.eventb.core.seesContext name="e" org.eventb.core.target="Station"/>
+    <org.eventb.core.variable name=")" org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="NW_to_NE"/>
+    <org.eventb.core.variable name="*" org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="NW_to_center"/>
+    <org.eventb.core.variable name="+" org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="NW_to_SW"/>
+    <org.eventb.core.variable name="-" org.eventb.core.comment="/" org.eventb.core.generated="false" org.eventb.core.identifier="SW_to_transit"/>
+    <org.eventb.core.variable name="." org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="SW_to_S"/>
+    <org.eventb.core.variable name="/" org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="center_to_NE"/>
+    <org.eventb.core.variable name="2" org.eventb.core.comment="/" org.eventb.core.generated="false" org.eventb.core.identifier="transit_to_center"/>
+    <org.eventb.core.variable name="3" org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="S_to_SE"/>
+    <org.eventb.core.variable name="4" org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="center_to_S"/>
+    <org.eventb.core.variable name="5" org.eventb.core.comment="/" org.eventb.core.generated="false" org.eventb.core.identifier="transit_to_S"/>
+    <org.eventb.core.variable name="6" org.eventb.core.comment="Has 1 secondary" org.eventb.core.generated="false" org.eventb.core.identifier="NE_to_S"/>
+    <org.eventb.core.variable name="i" org.eventb.core.generated="false" org.eventb.core.identifier="station_occupancy"/>
+    <org.eventb.core.variable name="k" org.eventb.core.generated="false" org.eventb.core.identifier="number_train"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX26D" org.eventb.core.generated="false" org.eventb.core.identifier="secondary_occupancy"/>
+    <org.eventb.core.variable name="_aT81Ed0iEe2bX7zSSwUldg" org.eventb.core.generated="false" org.eventb.core.identifier="Traffic_light_station"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX26{" org.eventb.core.generated="false" org.eventb.core.identifier="rail"/>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX26|" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="stop_in_1 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act36"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="stop_in_2 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act37"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="stop_in_3 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act38"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="stop_in_4 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act43"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="stop_in_5 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act42"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="stop_in_6 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act41"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="stop_in_7 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act40"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="stop_in_8 ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act39"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="NW_NE_available ≔ {1 ↦ TRUE, 2 ↦ TRUE}" org.eventb.core.generated="false" org.eventb.core.label="act44"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="NW_center_available ≔ {1 ↦ TRUE, 2 ↦ FALSE}" org.eventb.core.generated="false" org.eventb.core.label="act45"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="NW_SW_available ≔ {1 ↦ FALSE, 2 ↦ TRUE}" org.eventb.core.generated="false" org.eventb.core.label="act46"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="SW_transit_available ≔ {1 ↦ FALSE, 2 ↦ TRUE}" org.eventb.core.generated="false" org.eventb.core.label="act47"/>
+        <org.eventb.core.action name="3" org.eventb.core.assignment="SW_S_available ≔ {1 ↦ TRUE, 2 ↦ FALSE}" org.eventb.core.generated="false" org.eventb.core.label="act48"/>
+        <org.eventb.core.action name="4" org.eventb.core.assignment="center_NE_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}" org.eventb.core.generated="false" org.eventb.core.label="act49"/>
+        <org.eventb.core.action name="5" org.eventb.core.assignment="transit_center_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}" org.eventb.core.generated="false" org.eventb.core.label="act50"/>
+        <org.eventb.core.action name="6" org.eventb.core.assignment="S_SE_available ≔ {1 ↦ FALSE, 2 ↦ TRUE}" org.eventb.core.generated="false" org.eventb.core.label="act51"/>
+        <org.eventb.core.action name="7" org.eventb.core.assignment="center_S_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}" org.eventb.core.generated="false" org.eventb.core.label="act52"/>
+        <org.eventb.core.action name="8" org.eventb.core.assignment="transit_S_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}" org.eventb.core.generated="false" org.eventb.core.label="act53"/>
+        <org.eventb.core.action name="9" org.eventb.core.assignment="NE_S_available ≔ {1 ↦ FALSE, 2 ↦ FALSE}" org.eventb.core.generated="false" org.eventb.core.label="act54"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX26}" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="spawn_train">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="spawn_train"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX26~" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="NW_to_SW_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NW_to_SW_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NW_SW_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27'" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="SW_to_NW_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="SW_to_NW_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NW_SW_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27(" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="NW_to_NE_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NW_to_NE_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NW_NE_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27)" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="NE_to_NW_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NE_to_NW_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NW_NE_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27*" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="NW_to_center_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NW_to_center_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NW_center_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27+" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="center_to_NW_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="center_to_NW_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NW_center_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27," org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="SW_to_transit_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="SW_to_transit_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="SW_transit_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27-" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="transit_to_SW_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="transit_to_SW_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="SW_transit_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27." org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="transit_to_center_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="transit_to_center_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="transit_center_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27/" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="center_to_transit_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="center_to_transit_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="transit_center_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX270" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="center_to_NE_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="center_to_NE_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="center_NE_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX271" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="NE_to_center_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NE_to_center_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="center_NE_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX272" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="NE_to_S_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NE_to_S_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NE_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX273" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="S_to_NE_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="S_to_NE_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="NE_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX274" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="S_to_SE_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="S_to_SE_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="S_SE_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX275" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="SE_to_S_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="SE_to_S_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="S_SE_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX276" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="center_to_S_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="center_to_S_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="center_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX277" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="S_to_center_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="S_to_center_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="center_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX278" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="transit_to_S_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="transit_to_S_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="transit_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX279" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="S_to_transit_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="S_to_transit_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="transit_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27:" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="SW_to_S_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="SW_to_S_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="SW_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27;" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="S_to_SW_railway">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="S_to_SW_railway"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="SW_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27=" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_S_to_NE">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_S_to_NE"/>
+        <org.eventb.core.guard name="_8F0lAOHAEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_4 = FALSE"/>
+        <org.eventb.core.guard name="_Uiu_0uHBEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="NE_to_S(1) ≠ NOTHING ⇒ NE_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27&gt;" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_S_to_SE">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_S_to_SE"/>
+        <org.eventb.core.guard name="__r4FsOHAEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_5 = FALSE"/>
+        <org.eventb.core.guard name="_f_D7wOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="S_to_SE(3) ≠ NOTHING ⇒ S_SE_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27?" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_SE_to_S">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_SE_to_S"/>
+        <org.eventb.core.guard name="_Uiu_0OHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_5 = FALSE"/>
+        <org.eventb.core.guard name="_f_D7weIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="S_to_SE(1) ≠ NOTHING ⇒ S_SE_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27@" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_NW_to_SW">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_NW_to_SW"/>
+        <org.eventb.core.guard name="_Uiu_0eHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_7 = FALSE"/>
+        <org.eventb.core.guard name="_f_Ei0OIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="NW_to_SW(3) ≠ NOTHING ⇒ NW_SW_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27A" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_SW_to_NW">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_SW_to_NW"/>
+        <org.eventb.core.guard name="_f_Ei0eIaEe2vWKjJ1Im6Hw" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="stop_in_7 = FALSE"/>
+        <org.eventb.core.guard name="_f_Ei0uIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="NW_to_SW(1) ≠ NOTHING ⇒ NW_SW_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27B" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_SW_to_transit">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_SW_to_transit"/>
+        <org.eventb.core.guard name="_f_FJ4OIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="SW_to_transit(3) ≠ NOTHING ⇒ SW_transit_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27C" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_transit_to_SW">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_transit_to_SW"/>
+        <org.eventb.core.guard name="_f_FJ4eIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="SW_to_transit(1) ≠ NOTHING ⇒ SW_transit_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27D" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_SW_to_S">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_SW_to_S"/>
+        <org.eventb.core.guard name="_Uivm4OHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_6 = FALSE"/>
+        <org.eventb.core.guard name="_f_Fw8OIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="SW_to_S(3) ≠ NOTHING ⇒ SW_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27E" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_S_to_SW">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_S_to_SW"/>
+        <org.eventb.core.guard name="_UiwN8OHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_6 = FALSE"/>
+        <org.eventb.core.guard name="_f_GYAOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="SW_to_S(1) ≠ NOTHING ⇒ SW_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27F" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_NW_to_center">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_NW_to_center"/>
+        <org.eventb.core.guard name="_UiwN8eHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_2 = FALSE"/>
+        <org.eventb.core.guard name="_f_GYAeIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="NW_to_center(3) ≠ NOTHING ⇒ NW_center_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27G" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_center_to_NW">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_center_to_NW"/>
+        <org.eventb.core.guard name="_Uiw1AOHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_2 = FALSE"/>
+        <org.eventb.core.guard name="_f_G_EOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="NW_to_center(1) ≠ NOTHING ⇒ NW_center_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27H" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_NW_to_NE">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_NW_to_NE"/>
+        <org.eventb.core.guard name="_Uiw1AeHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_1 = FALSE"/>
+        <org.eventb.core.guard name="_f_HmIOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="NW_to_NE(3) ≠ NOTHING ⇒ NW_NE_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27I" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_NE_to_NW">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_NE_to_NW"/>
+        <org.eventb.core.guard name="_UixcEOHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_1 = FALSE"/>
+        <org.eventb.core.guard name="_f_HmIeIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="NW_to_NE(1) ≠ NOTHING ⇒ NW_NE_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27J" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_center_to_NE">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_center_to_NE"/>
+        <org.eventb.core.guard name="_UixcEeHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_3 = FALSE"/>
+        <org.eventb.core.guard name="_f_INMOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="center_to_NE(3) ≠ NOTHING ⇒ center_NE_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27K" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_NE_to_center">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_NE_to_center"/>
+        <org.eventb.core.guard name="_UiyDIOHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_3 = FALSE"/>
+        <org.eventb.core.guard name="_f_I0QOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="center_to_NE(1) ≠ NOTHING ⇒ center_NE_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27L" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_transit_to_center">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_transit_to_center"/>
+        <org.eventb.core.guard name="_f_I0QeIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="transit_to_center(3) ≠ NOTHING ⇒ transit_center_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27M" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_center_to_transit">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_center_to_transit"/>
+        <org.eventb.core.guard name="_f_I0QuIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="transit_to_center(1) ≠ NOTHING ⇒ transit_center_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27N" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_transit_to_S">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_transit_to_S"/>
+        <org.eventb.core.guard name="_f_KCYOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="transit_to_S(3) ≠ NOTHING ⇒ transit_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27O" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_S_to_transit">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_S_to_transit"/>
+        <org.eventb.core.guard name="_f_KCYeIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="transit_to_S(1) ≠ NOTHING ⇒ transit_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27P" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_center_to_S">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_center_to_S"/>
+        <org.eventb.core.guard name="_UiyqMOHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_8 = FALSE"/>
+        <org.eventb.core.guard name="_f_KCYuIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="center_to_S(3) ≠ NOTHING ⇒ center_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27Q" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_S_to_center">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_S_to_center"/>
+        <org.eventb.core.guard name="_UizRQOHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_8 = FALSE"/>
+        <org.eventb.core.guard name="_f_LQgOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="center_to_S(1) ≠ NOTHING ⇒ center_S_available(1) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27R" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="avance_NE_to_S">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="avance_NE_to_S"/>
+        <org.eventb.core.guard name="_UizRQeHBEe2Sf7VYXxE_5w" org.eventb.core.comment="The switch must no point to the secondary station if we want to avance" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="stop_in_4 = FALSE"/>
+        <org.eventb.core.guard name="_f_L3kOIaEe2vWKjJ1Im6Hw" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="NE_to_S(3) ≠ NOTHING ⇒ NE_S_available(2) = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27S" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station1">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station1"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_1 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27T" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station2">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station2"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_2 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27U" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station3">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station3"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_3 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27V" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station4">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station4"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_4 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27W" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station5">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station5"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_5 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27X" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station6">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station6"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_6 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27Y" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station7">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station7"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_7 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX27Z" org.eventb.core.comment="Swap the value of the station and the railway" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="in_out_station8">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="in_out_station8"/>
+        <org.eventb.core.guard name="(" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="stop_in_8 = TRUE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27]" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_1"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27\" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_2"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27[" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_3"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27^" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_4"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27_" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_5"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27`" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_6"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27a" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_7"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27b" org.eventb.core.generated="false" org.eventb.core.identifier="stop_in_8"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27c" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="stop_in_1 ∈ BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27d" org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="stop_in_2 ∈ BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27e" org.eventb.core.generated="false" org.eventb.core.label="inv3" org.eventb.core.predicate="stop_in_3 ∈ BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27f" org.eventb.core.generated="false" org.eventb.core.label="inv4" org.eventb.core.predicate="stop_in_4 ∈ BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27g" org.eventb.core.generated="false" org.eventb.core.label="inv5" org.eventb.core.predicate="stop_in_5 ∈ BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27i" org.eventb.core.generated="false" org.eventb.core.label="inv7" org.eventb.core.predicate="stop_in_6 ∈ BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27h" org.eventb.core.generated="false" org.eventb.core.label="inv6" org.eventb.core.predicate="stop_in_7 ∈ BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27j" org.eventb.core.generated="false" org.eventb.core.label="inv8" org.eventb.core.predicate="stop_in_8 ∈ BOOL"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27k" org.eventb.core.generated="false" org.eventb.core.identifier="NW_NE_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27l" org.eventb.core.generated="false" org.eventb.core.identifier="NW_center_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27m" org.eventb.core.generated="false" org.eventb.core.identifier="NW_SW_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27n" org.eventb.core.generated="false" org.eventb.core.identifier="SW_transit_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27o" org.eventb.core.generated="false" org.eventb.core.identifier="SW_S_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27p" org.eventb.core.generated="false" org.eventb.core.identifier="center_NE_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27q" org.eventb.core.generated="false" org.eventb.core.identifier="transit_center_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27r" org.eventb.core.generated="false" org.eventb.core.identifier="S_SE_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27s" org.eventb.core.generated="false" org.eventb.core.identifier="center_S_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27t" org.eventb.core.generated="false" org.eventb.core.identifier="transit_S_available"/>
+    <org.eventb.core.variable name="_vWSvU9llEe2CNbglQzX27u" org.eventb.core.generated="false" org.eventb.core.identifier="NE_S_available"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27v" org.eventb.core.generated="false" org.eventb.core.label="inv9" org.eventb.core.predicate="NW_NE_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27w" org.eventb.core.generated="false" org.eventb.core.label="inv10" org.eventb.core.predicate="NW_center_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27x" org.eventb.core.generated="false" org.eventb.core.label="inv11" org.eventb.core.predicate="NW_SW_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27y" org.eventb.core.generated="false" org.eventb.core.label="inv12" org.eventb.core.predicate="SW_transit_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27z" org.eventb.core.generated="false" org.eventb.core.label="inv13" org.eventb.core.predicate="SW_S_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27{" org.eventb.core.generated="false" org.eventb.core.label="inv14" org.eventb.core.predicate="center_NE_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27|" org.eventb.core.generated="false" org.eventb.core.label="inv15" org.eventb.core.predicate="transit_center_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX28(" org.eventb.core.generated="false" org.eventb.core.label="inv19" org.eventb.core.predicate="S_SE_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27}" org.eventb.core.generated="false" org.eventb.core.label="inv16" org.eventb.core.predicate="center_S_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX27~" org.eventb.core.generated="false" org.eventb.core.label="inv17" org.eventb.core.predicate="transit_S_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.invariant name="_vWSvU9llEe2CNbglQzX28'" org.eventb.core.generated="false" org.eventb.core.label="inv18" org.eventb.core.predicate="NE_S_available ∈ (1‥2) → BOOL"/>
+    <org.eventb.core.event name="_vWSvU9llEe2CNbglQzX28)" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="NW_to_SW_enable">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="NW_SW_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="NW_NE_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="*" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NW_SW_available(1) = FALSE"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_F_kroOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="SW_to_NW_enable">
+        <org.eventb.core.guard name="_4_rGsOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NW_SW_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_rGseGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_SW_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_rtwOGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_transit_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_rtweGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZWlgOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="NW_to_NE_enable">
+        <org.eventb.core.guard name="_4_sU0eGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NW_NE_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_s74OGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_NE_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_ti8OGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_SW_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_ti8eGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_center_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZXzoOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="NE_to_NW_enable">
+        <org.eventb.core.guard name="_4_uKAOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NW_NE_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_uxEOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_NE_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_vYIOGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_NE_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_vYIeGwEe2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZZBwOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="NW_to_center_enable">
+        <org.eventb.core.guard name="_4_v_MeGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NW_center_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_wmQOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_center_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_xNUOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_NE_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_xNUeGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_SW_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZaP4OGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="center_to_NW_enable">
+        <org.eventb.core.guard name="_4_x0YOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NW_center_available(1) = FALSE"/>
+        <org.eventb.core.action name="_4_x0YeGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_center_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_ybcOGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_center_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_zCgOGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_0aW2gOGyEe2LWasyTvSMQw" org.eventb.core.assignment="center_NE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZbeAOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="SW_to_transit_enable">
+        <org.eventb.core.guard name="_4_zpkOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="SW_transit_available(1) = FALSE"/>
+        <org.eventb.core.action name="_4_zpkeGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_transit_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_0QoOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_SW_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_0QoeGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZcsIOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="transit_to_SW_enable">
+        <org.eventb.core.guard name="_4_03sOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="SW_transit_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_03seGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_transit_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_1ewOGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_1eweGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_center_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZd6QOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="transit_to_center_enable">
+        <org.eventb.core.guard name="_4_2F0eGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="transit_center_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_2s4OGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_center_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_2s4eGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_transit_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_2s4uGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZfIYOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="center_to_transit_enable">
+        <org.eventb.core.guard name="_4_3T8eGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="transit_center_available(1) = FALSE"/>
+        <org.eventb.core.action name="_4_37AOGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_center_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_37AeGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_4iEOGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_NE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_kzk5cOGzEe2LWasyTvSMQw" org.eventb.core.assignment="NW_center_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZgWgOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="center_to_NE_enable">
+        <org.eventb.core.guard name="_4_5JIOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="center_NE_available(1) = FALSE"/>
+        <org.eventb.core.action name="_4_5JIeGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_NE_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_5JIuGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_center_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_6XQOGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_center_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_xBVPwOGzEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZhkoOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="NE_to_center_enable">
+        <org.eventb.core.guard name="_4_6-UOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="center_NE_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_6-UeGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_NE_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_7lYOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_NE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_7lYeGwEe2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZiywOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="NE_to_S_enable">
+        <org.eventb.core.guard name="_4_8McOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NE_S_available(1) = FALSE"/>
+        <org.eventb.core.action name="_4_8MceGwEe2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_8zgOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_NE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_8zgeGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_NE_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZkA4OGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="S_to_NE_enable">
+        <org.eventb.core.guard name="_4_9akeGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="NE_S_available(2) = FALSE"/>
+        <org.eventb.core.action name="_4_-BoOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4_-BoeGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4_-BouGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_vqWZQOG0Ee2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="_vqXAUOG0Ee2LWasyTvSMQw" org.eventb.core.assignment="S_SE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZkn8OGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="S_to_SE_enable">
+        <org.eventb.core.guard name="_4_-oseGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="S_SE_available(1) = FALSE"/>
+        <org.eventb.core.action name="_4__PwOGwEe2LWasyTvSMQw" org.eventb.core.assignment="S_SE_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_4__PweGwEe2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_4__PwuGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_vqYOcOG0Ee2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="_vqYOceG0Ee2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZoSUOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="center_to_S_enable">
+        <org.eventb.core.guard name="_4__20eGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="center_S_available(1) = FALSE"/>
+        <org.eventb.core.action name="_5AAd4OGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_5AAd4eGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_center_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_5ABE8OGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_center_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_WZim4OG1Ee2LWasyTvSMQw" org.eventb.core.assignment="center_NE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZqHgOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="S_to_center_enable">
+        <org.eventb.core.guard name="_5ABsAOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="center_S_available(2) = FALSE"/>
+        <org.eventb.core.action name="_5ABsAeGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_5ABsAuGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_5ACTEOGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_fzNE8OG1Ee2LWasyTvSMQw" org.eventb.core.assignment="S_SE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="_fzNE8eG1Ee2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZsjwOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="transit_to_S_enable">
+        <org.eventb.core.guard name="_5AC6IOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="transit_S_available(2) = FALSE"/>
+        <org.eventb.core.action name="_5AC6IeGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_5ADhMOGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_transit_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_5ADhMeGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_center_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZuY8OGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="S_to_transit_enable">
+        <org.eventb.core.guard name="_5AEIQeGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="transit_S_available(1) = FALSE"/>
+        <org.eventb.core.action name="_5AEvUOGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_5AEvUeGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_5AFWYOGwEe2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_P5YQEOG2Ee2LWasyTvSMQw" org.eventb.core.assignment="S_SE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="_P5YQEeG2Ee2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZw1MOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="SW_to_S_enable">
+        <org.eventb.core.guard name="_5AF9cOGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="SW_S_available(2) = FALSE"/>
+        <org.eventb.core.action name="_5AF9ceGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(2) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_5AGkgOGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_transit_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_5AGkgeGwEe2LWasyTvSMQw" org.eventb.core.assignment="NW_SW_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_rZyqYOGxEe2LWasyTvSMQw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="S_to_SW_enable">
+        <org.eventb.core.guard name="_5AHLkeGwEe2LWasyTvSMQw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="SW_S_available(1) = FALSE"/>
+        <org.eventb.core.action name="_5AHyoOGwEe2LWasyTvSMQw" org.eventb.core.assignment="SW_S_available(1) ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_5AHyoeGwEe2LWasyTvSMQw" org.eventb.core.assignment="transit_S_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="_5AIZsOGwEe2LWasyTvSMQw" org.eventb.core.assignment="center_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="_dgSxsOG2Ee2LWasyTvSMQw" org.eventb.core.assignment="NE_S_available(2) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="_dgSxseG2Ee2LWasyTvSMQw" org.eventb.core.assignment="S_SE_available(1) ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqevgOHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station1_switch">
+        <org.eventb.core.parameter name="_sNPqIOG9Ee2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_PqG5cOHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_PqG5ceHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_1 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_PqG5cuHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_1 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_PqHggOHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_1 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqfWkOHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station2_switch">
+        <org.eventb.core.parameter name="_qqf9oOHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_qqf9oeHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_qqf9ouHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_2 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_qqf9o-HAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_2 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_qqf9pOHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_2 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqf9peHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station3_switch">
+        <org.eventb.core.parameter name="_qqf9puHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_qqf9p-HAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_qqf9qOHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_3 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_qqgksOHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_3 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_qqgkseHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_3 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqgksuHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station4_switch">
+        <org.eventb.core.parameter name="_qqhLwOHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_qqhLweHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_qqhLwuHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_4 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_qqhLw-HAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_4 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_qqhLxOHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_4 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqhy0OHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station5_switch">
+        <org.eventb.core.parameter name="_qqhy0eHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_qqhy0uHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_qqhy0-HAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_5 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_qqhy1OHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_5 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_qqiZ4OHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_5 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqiZ4eHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station6_switch">
+        <org.eventb.core.parameter name="_qqiZ4uHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_qqiZ4-HAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_qqiZ5OHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_6 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_qqiZ5eHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_6 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_qqjA8OHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_6 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqjA8eHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station7_switch">
+        <org.eventb.core.parameter name="_qqjA8uHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_qqjA8-HAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_qqjA9OHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_7 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_qqjA9eHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_7 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_qqjoAOHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_7 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_qqjoAeHAEe2Sf7VYXxE_5w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="station8_switch">
+        <org.eventb.core.parameter name="_qqjoAuHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.identifier="change_value"/>
+        <org.eventb.core.guard name="_qqjoA-HAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="change_value ∈ BOOL"/>
+        <org.eventb.core.guard name="_qqjoBOHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="stop_in_8 = TRUE ⇒ change_value = FALSE"/>
+        <org.eventb.core.guard name="_qqkPEOHAEe2Sf7VYXxE_5w" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="stop_in_8 = FALSE ⇒ change_value = TRUE"/>
+        <org.eventb.core.action name="_qqkPEeHAEe2Sf7VYXxE_5w" org.eventb.core.assignment="stop_in_8 ≔  change_value" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

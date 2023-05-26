@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1681983622422" org.eventb.texttools.text_representation="context Station&#10;&#10;sets Station trafficlight railway&#10;&#10;constants NW SW center NE transit S SE station1 station2 station3 station4 station5 station6 station7 station8 Main_station Secondary_station red green NOTRAIN BUSY&#10;&#10;axioms&#10;  @axm1 partition(Station, {NW}, {SW}, {center}, {NE}, {transit}, {S}, {SE}, {station1}, {station2}, {station3}, {station4},&#10;        {station5}, {station6}, {station7}, {station8})&#10;  @axm2 Main_station ⊆ Station&#10;  @axm3 Main_station = {NW, SW, center, NE, transit, S, SE}&#10;  @axm4 Secondary_station ⊆ Station&#10;  @axm5 Secondary_station = {station1, station2, station3, station4,&#10;        station5, station6, station7, station8}&#10;  @axm9 partition(trafficlight,{green},{red})&#10;  @axm8 partition(railway,{NOTRAIN},{BUSY})&#10;end" version="3">
+    <org.eventb.core.carrierSet name="'" org.eventb.core.generated="false" org.eventb.core.identifier="Station"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="(" org.eventb.core.generated="false" org.eventb.core.identifier="NW"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=")" org.eventb.core.generated="false" org.eventb.core.identifier="SW"/>
+    <org.eventb.core.axiom name="*" org.eventb.core.generated="false" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(Station, {NW}, {SW}, {center}, {NE}, {transit}, {S}, {SE}, {station1}, {station2}, {station3}, {station4},&#10;        {station5}, {station6}, {station7}, {station8})"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="3" org.eventb.core.generated="false" org.eventb.core.identifier="center"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="4" org.eventb.core.generated="false" org.eventb.core.identifier="NE"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="5" org.eventb.core.generated="false" org.eventb.core.identifier="transit"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="6" org.eventb.core.generated="false" org.eventb.core.identifier="S"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="7" org.eventb.core.generated="false" org.eventb.core.identifier="SE"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="1" org.eventb.core.generated="false" org.eventb.core.identifier="station1"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="2" org.eventb.core.generated="false" org.eventb.core.identifier="station2"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="8" org.eventb.core.generated="false" org.eventb.core.identifier="station3"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="9" org.eventb.core.generated="false" org.eventb.core.identifier="station4"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=":" org.eventb.core.generated="false" org.eventb.core.identifier="station5"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name=";" org.eventb.core.generated="false" org.eventb.core.identifier="station6"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="=" org.eventb.core.generated="false" org.eventb.core.identifier="station7"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="&gt;" org.eventb.core.generated="false" org.eventb.core.identifier="station8"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="+" org.eventb.core.generated="false" org.eventb.core.identifier="Main_station"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="," org.eventb.core.generated="false" org.eventb.core.identifier="Secondary_station"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.generated="false" org.eventb.core.label="axm2" org.eventb.core.predicate="Main_station ⊆ Station"/>
+    <org.eventb.core.axiom name="." org.eventb.core.generated="false" org.eventb.core.label="axm3" org.eventb.core.predicate="Main_station = {NW, SW, center, NE, transit, S, SE}"/>
+    <org.eventb.core.axiom name="/" org.eventb.core.generated="false" org.eventb.core.label="axm4" org.eventb.core.predicate="Secondary_station ⊆ Station"/>
+    <org.eventb.core.axiom name="?" org.eventb.core.generated="false" org.eventb.core.label="axm5" org.eventb.core.predicate="Secondary_station = {station1, station2, station3, station4,&#10;        station5, station6, station7, station8}"/>
+    <org.eventb.core.carrierSet name="_XuM4cN9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.identifier="trafficlight"/>
+    <org.eventb.core.carrierSet name="_XuNfgN9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.identifier="railway"/>
+    <org.eventb.core.constant name="_XuNfgd9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.identifier="red"/>
+    <org.eventb.core.constant name="_XuOGkN9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.identifier="green"/>
+    <org.eventb.core.constant name="_XuOtoN9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.identifier="NOTRAIN"/>
+    <org.eventb.core.constant name="_XuPUsN9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.identifier="BUSY"/>
+    <org.eventb.core.axiom name="_XuP7wN9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.label="axm9" org.eventb.core.predicate="partition(trafficlight,{green},{red})"/>
+    <org.eventb.core.axiom name="_XuQi0N9fEe2l7pnb9eZyqg" org.eventb.core.generated="false" org.eventb.core.label="axm8" org.eventb.core.predicate="partition(railway,{NOTRAIN},{BUSY})"/>
+</org.eventb.core.contextFile>

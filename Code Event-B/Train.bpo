@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="Train" org.eventb.core.type="ℙ(Train)"/>
+        <org.eventb.core.poIdentifier name="Tchou_tchou" org.eventb.core.type="Train"/>
+        <org.eventb.core.poIdentifier name="Kozma_Minin" org.eventb.core.type="Train"/>
+        <org.eventb.core.poIdentifier name="NOTHING" org.eventb.core.type="Train"/>
+        <org.eventb.core.poIdentifier name="The_Whistling_Limited" org.eventb.core.type="Train"/>
+        <org.eventb.core.poIdentifier name="The_Orient_Express" org.eventb.core.type="Train"/>
+        <org.eventb.core.poIdentifier name="The_Steamy_Express" org.eventb.core.type="Train"/>
+        <org.eventb.core.poIdentifier name="Orient_Express" org.eventb.core.type="Train"/>
+        <org.eventb.core.poIdentifier name="Thomas_the_tank" org.eventb.core.type="Train"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/InfoTraffic/Train.bpo|org.eventb.core.poFile#Train|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(Train,{NOTHING},{Orient_Express},{Thomas_the_tank},{Tchou_tchou},{The_Steamy_Express},{The_Orient_Express},{The_Whistling_Limited},{Kozma_Minin})" org.eventb.core.source="/InfoTraffic/Train.buc|org.eventb.core.contextFile#Train|org.eventb.core.axiom#."/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
